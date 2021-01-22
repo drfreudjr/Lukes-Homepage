@@ -4,7 +4,7 @@ body {
 
 a:link, a:visited {
 	color: #7aa600;
-	font-size: 150%;
+	font-size: 2.0vw;
 	font-family: Courier;
 	text-decoration: none;
 	margin: 1%;}
@@ -17,6 +17,6 @@ a:hover, a:active {
 
   #name {
 	color: #7aa600;
-	font-size: 300%;
+	font-size: 5vw;
 	font-family: Courier;
 	margin: 1%;}
