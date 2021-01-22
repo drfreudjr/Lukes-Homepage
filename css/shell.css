@@ -1,6 +1,8 @@
-body {
+body {     background: black;
      background-image: url("../images/boston.png");
-     background-size: cover;}
+     background-size: cover;
+     background-repeat: no-repeat;
+}
 
 a:link, a:visited {
 	color: #7aa600;
