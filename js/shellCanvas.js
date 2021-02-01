@@ -35,7 +35,7 @@ sizeCanvas();   // Begin the resize loop by creating canvas
 
 function drawScreen() {
 
-    intensity = 1.2                         // THe golden ratio is peaceful - this sharpens it
+    intensity = 1.6                        // THe golden ratio is peaceful - this sharpens it
     let goldenRatio = .382 * intensity
 
     let width = innerWidth
@@ -45,45 +45,53 @@ function drawScreen() {
     context.fillStyle = backgroundColor             // set background color in case u want to use mask
     context.fillRect(0, 0, width, height)           // try a mask varient and compare performance
 
-    const c = new Image()                   // draw foreground image
+// draw foreground image
+
+    const c = new Image()                   
     c.src = "bostonSat.webp"   
     context.drawImage(c, 0, 0)
 
-    xWidth = Math.round(width*goldenRatio)   //  make the triangle cutout (top) - set initial distance from corner
+// draw triangle cutouts
+
+    xWidth = Math.round(width*goldenRatio)   //  top - set initial distance from  top left corner
     yHeight = Math.round(height*goldenRatio)
 
     context.fillStyle = backgroundColor // draw top triangle
     context.beginPath()             
-    context.moveTo(xWidth, 0)       // tr
-    context.lineTo(0,0)             // corner
-    context.lineTo(0, yHeight)      // bl
-    context.fill()                  // last path is implicit
+    context.moveTo(xWidth, 0)       // top right
+    context.lineTo(0,0)             // top left corner
+    context.lineTo(0, yHeight)      // bottom left
+    context.fill()                  // draw (last path is implicit)
 
     context.beginPath()                     // draw bottom triangle
-    context.moveTo(width - xWidth, height)  //bl
-    context.lineTo(width,height)            // corner
-    context.lineTo(width, height - yHeight) // tr
+    context.moveTo(width - xWidth, height)  // bottom left
+    context.lineTo(width,height)            // bottom right corner
+    context.lineTo(width, height - yHeight) // top right
     context.fill()
 
 
-    baseFontSize = 35       // What was the initial full screen desktop font at 1360px
-    // cl(width)
-    percentOfFullSize = width/1360 // ratio of current screen/full screen
-    adjustedFontSize = baseFontSize*percentOfFullSize       // linear scaling to the ratio // try to sow down
-    calculatedFont = (`${adjustedFontSize}px serif`)        //string creation
-    // cl(calculatedFont)
+//draw text
 
-    context.font = calculatedFont                           // assign to the object
+    function dynamicFontSize (originalFontSize = 55, originalCanvsSize = 1360) { // in design params/out adjusted font size
+        percentOfFullSize = innerWidth/originalCanvsSize                                
+        adjustedLinearFontSize = originalFontSize*percentOfFullSize                     //linear trnsform
+        adjustedNonlinearFontSize = originalFontSize /(1-Math.log(percentOfFullSize))   //nonlinear transform
+
+        cl(adjustedLinearFontSize, adjustedNonlinearFontSize)
+        return(adjustedNonlinearFontSize)
+    }
+
+    currentFont = 'Courier'
+    calculatedFont = dynamicFontSize(55, 1360)
+
+    calculatedFontString = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
+    cl(calculatedFontString)
+
+    context.font = calculatedFontString                     // assign to the object
     context.fillStyle = "#7aa600"                           // green pulled from picture
-    context.fillText('Luke Wilcox', 20, 40)
-
-    k = .6  // this constant scales to the above calculated adjustedFontSize - hack just to make smaller to size of name
-    context.font =  (`${adjustedFontSize*k}px serif`)       // string creation
-    context.fillStyle = "#7aa600"
-    context.fillText('About Me', 20, 80)                    // NEED TO ADJUST Y
-
+    context.fillText('Luke Wilcox', 20, 80)
                                                             // write all this calculation as a function
-}   //drawScreen function
+}   //end drawScreen function
 
 
-}   //onload wrapper
+}   // end onload wrapper
