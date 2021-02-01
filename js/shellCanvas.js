@@ -97,11 +97,21 @@ cl(x)
     distanceFromTop = dynamicHeightFromTop()
 
     calculatedFontString = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
-    // cl(calculatedFontString)
 
     context.font = calculatedFontString                     // assign to the object
+    cl(calculatedFontString)
     context.fillStyle = "#7aa600"                           // green pulled from picture
     context.fillText('Luke Wilcox', 20, distanceFromTop)
+    
+    cl(calculatedFont)
+    context.fillStyle = "#7aa600"   //same color
+    calculatedFontString = (`${adjustedNonlinearFontSize*.7}px ${currentFont}`) //smaller font size for about me
+    context.font = calculatedFontString
+
+    context.fillText('About Me', 20, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
+
+
+
                                                             // write all this calculation as a function
 }   //end drawScreen function
 
