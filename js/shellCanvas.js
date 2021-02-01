@@ -77,19 +77,31 @@ function drawScreen() {
         adjustedLinearFontSize = originalFontSize*percentOfFullSize                     //linear trnsform
         adjustedNonlinearFontSize = originalFontSize /(1-Math.log(percentOfFullSize))   //nonlinear transform
 
-        cl(adjustedLinearFontSize, adjustedNonlinearFontSize)
+        // cl(adjustedLinearFontSize, adjustedNonlinearFontSize)
         return(adjustedNonlinearFontSize)
     }
 
+    function dynamicHeightFromTop (originalDistanceFromTop = 80, originalCanvsSize = 1360) {
+        percentOfFullSize = innerWidth/originalCanvsSize
+        // cl(percentOfFullSize)
+        adjustedDistanceFromTop = originalDistanceFromTop*percentOfFullSize
+        // cl(adjustedDistanceFromTop)
+        return(adjustedDistanceFromTop)
+    }
+
+x = dynamicHeightFromTop()
+cl(x)
+
     currentFont = 'Courier'
     calculatedFont = dynamicFontSize(55, 1360)
+    distanceFromTop = dynamicHeightFromTop()
 
     calculatedFontString = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
-    cl(calculatedFontString)
+    // cl(calculatedFontString)
 
     context.font = calculatedFontString                     // assign to the object
     context.fillStyle = "#7aa600"                           // green pulled from picture
-    context.fillText('Luke Wilcox', 20, 80)
+    context.fillText('Luke Wilcox', 20, distanceFromTop)
                                                             // write all this calculation as a function
 }   //end drawScreen function
 
