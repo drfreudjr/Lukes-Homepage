@@ -35,7 +35,7 @@ sizeCanvas();   // Begin the resize loop by creating canvas
 
 function drawScreen() {
 
-    intensity = 1.6                        // THe golden ratio is peaceful - this sharpens it
+    intensity = 1.2                        // THe golden ratio is peaceful - this sharpens it
     let goldenRatio = .382 * intensity
 
     let width = innerWidth
