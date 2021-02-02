@@ -7,12 +7,14 @@ window.onload = function () {   // onload wrapper
 var canvas;        // Global canvas object reference
 var context;       // Global 2D context reference
 
+// // // // // // // // // // // // // // Begin Full-page canvas code
+
 function createCanvas () {                
     const canvas = document.createElement("canvas"); 
     canvas.style.position = "absolute"; 
     canvas.style.left     = "0px";      
     canvas.style.top      = "0px";
-    // canvas.style.zIndex   = 1;        
+
     document.body.appendChild(canvas);  // Add to document
     return canvas;
 }
@@ -35,17 +37,13 @@ sizeCanvas();   // Begin the resize loop by creating canvas
 
 function drawScreen() {
 
-    intensity = 1.2                        // THe golden ratio is peaceful - this sharpens it
-    let goldenRatio = .382 * intensity
 
-    let width = innerWidth
-    let height = innerHeight
     let backgroundColor = '#000000'
 
     context.fillStyle = backgroundColor             // set background color in case u want to use mask
-    context.fillRect(0, 0, width, height)           // try a mask varient and compare performance
+    context.fillRect(0, 0, innerWidth, innerHeight)           // try a mask varient and compare performance
 
-// draw foreground image
+    // draw foreground image
 
     const c = new Image()                   
     c.src = "bostonSat.webp"   
@@ -53,8 +51,11 @@ function drawScreen() {
 
 // draw triangle cutouts
 
-    xWidth = Math.round(width*goldenRatio)   //  top - set initial distance from  top left corner
-    yHeight = Math.round(height*goldenRatio)
+    intensity = 1.2                    // THe golden ratio is peaceful - this sharpens it
+    let goldenRatio = .382 * intensity
+
+    xWidth = Math.round(innerWidth*goldenRatio)   //  top - set initial distance from  top left corner
+    yHeight = Math.round(innerHeight*goldenRatio)
 
     context.fillStyle = backgroundColor // draw top triangle
     context.beginPath()             
@@ -64,9 +65,9 @@ function drawScreen() {
     context.fill()                  // draw (last path is implicit)
 
     context.beginPath()                     // draw bottom triangle
-    context.moveTo(width - xWidth, height)  // bottom left
-    context.lineTo(width,height)            // bottom right corner
-    context.lineTo(width, height - yHeight) // top right
+    context.moveTo(innerWidth - xWidth, innerHeight)  // bottom left
+    context.lineTo(innerWidth,innerHeight)            // bottom right corner
+    context.lineTo(innerWidth, innerHeight - yHeight) // top right
     context.fill()
 
 
@@ -115,5 +116,7 @@ cl(x)
                                                             // write all this calculation as a function
 }   //end drawScreen function
 
+// requestAnimationFrame(draw);
+// setInterval(requestAnimationFrame(draw), 1000/60);
 
 }   // end onload wrapper
