@@ -1,4 +1,8 @@
-/* Javascript Shell */
+/*  Homepage for Luke Wilcox
+    Built 100% on canvas with dynamic resizing for window size
+    by Dr Freudjr
+ */
+
 // 'use strict';
 const cl = console.log;
 
@@ -37,11 +41,9 @@ sizeCanvas();   // Begin the resize loop by creating canvas
 
 function drawScreen() {
 
-
-    let backgroundColor = '#000000'
-
-    context.fillStyle = backgroundColor             // set background color in case u want to use mask
-    context.fillRect(0, 0, innerWidth, innerHeight)           // try a mask varient and compare performance
+    const backgroundColor = '#000000'
+    context.fillStyle = backgroundColor                     // set background color in case u want to use mask
+    context.fillRect(0, 0, innerWidth, innerHeight)         // try a mask varient and compare performance
 
     // draw foreground image
 
@@ -51,11 +53,11 @@ function drawScreen() {
 
 // draw triangle cutouts
 
-    intensity = 1.2                    // THe golden ratio is peaceful - this sharpens it
-    let goldenRatio = .382 * intensity
+    ratioMagnifier = 1  // THe golden ratio is peaceful - this sharpens it 2.65 is erasure; 0 is no triangles
+    let goldenRatio = .382 * ratioMagnifier
 
-    xWidth = Math.round(innerWidth*goldenRatio)   //  top - set initial distance from  top left corner
-    yHeight = Math.round(innerHeight*goldenRatio)
+    xWidth = Math.round(innerWidth*goldenRatio)     //  set horizontal distance from top left corner
+    yHeight = Math.round(innerHeight*goldenRatio)   //  set verticle distance from top left corner
 
     context.fillStyle = backgroundColor // draw top triangle
     context.beginPath()             
@@ -113,7 +115,6 @@ cl(x)
 
 
 
-                                                            // write all this calculation as a function
 }   //end drawScreen function
 
 // requestAnimationFrame(draw);
