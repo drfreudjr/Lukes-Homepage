@@ -37,11 +37,11 @@ addEventListener("resize", sizeCanvas); // Event listener
 
 sizeCanvas();   // Begin the resize loop by creating canvas
 
-// // // // // // // // // // // Evrything above here is responsive full-screen canvas - below is page-specific
+// // // // // // // // // // // Everything above here is responsive full-screen canvas - below is page-specific
 
 function drawScreen() {
 
-    const backgroundColor = '#000000'
+    const backgroundColor = '#111111'
     context.fillStyle = backgroundColor                     // set background color in case u want to use mask
     context.fillRect(0, 0, innerWidth, innerHeight)         // try a mask varient and compare performance
 
@@ -51,13 +51,15 @@ function drawScreen() {
     c.src = "bostonSat.webp"   
     context.drawImage(c, 0, 0)
 
-// draw triangle cutouts
+function drawTriangleCutouts (ratioMagnifier = 1.2) {
 
-    ratioMagnifier = 1  // THe golden ratio is peaceful - this sharpens it 2.65 is erasure; 0 is no triangles
-    let goldenRatio = .382 * ratioMagnifier
+    // THe golden ratio is peaceful - magnifier increases: 2.65 is erasure - 0 is no triangles
+    let goldenRatio = .382 
+    cutoutRatio = goldenRatio*ratioMagnifier
 
-    xWidth = Math.round(innerWidth*goldenRatio)     //  set horizontal distance from top left corner
-    yHeight = Math.round(innerHeight*goldenRatio)   //  set verticle distance from top left corner
+
+    xWidth = Math.round(innerWidth*cutoutRatio)     //  set horizontal distance from top left corner
+    yHeight = Math.round(innerHeight*cutoutRatio)   //  set verticle distance from top left corner
 
     context.fillStyle = backgroundColor // draw top triangle
     context.beginPath()             
@@ -71,6 +73,10 @@ function drawScreen() {
     context.lineTo(innerWidth,innerHeight)            // bottom right corner
     context.lineTo(innerWidth, innerHeight - yHeight) // top right
     context.fill()
+}
+
+
+drawTriangleCutouts()
 
 
 //draw text
@@ -92,9 +98,6 @@ function drawScreen() {
         return(adjustedDistanceFromTop)
     }
 
-x = dynamicHeightFromTop()
-cl(x)
-
     currentFont = 'Courier'
     calculatedFont = dynamicFontSize(55, 1360)
     distanceFromTop = dynamicHeightFromTop()
@@ -102,11 +105,11 @@ cl(x)
     calculatedFontString = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
 
     context.font = calculatedFontString                     // assign to the object
-    cl(calculatedFontString)
+    // cl(calculatedFontString)
     context.fillStyle = "#7aa600"                           // green pulled from picture
     context.fillText('Luke Wilcox', 10, distanceFromTop)
     
-    cl(calculatedFont)
+    // cl(calculatedFont)
     context.fillStyle = "#7aa600"   //same color
     calculatedFontString = (`${adjustedNonlinearFontSize*.7}px ${currentFont}`) //smaller font size for about me
     context.font = calculatedFontString
