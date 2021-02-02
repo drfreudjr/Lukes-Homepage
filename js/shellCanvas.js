@@ -13,6 +13,9 @@ var context;       // Global 2D context reference
 
 // // // // // // // // // // // // // // Begin Full-page canvas code
 
+sizeCanvas()   // create initial canvas
+addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
+
 function createCanvas () {                
     const canvas = document.createElement("canvas"); 
     canvas.style.position = "absolute"; 
@@ -33,21 +36,21 @@ function sizeCanvas () {                // Create or resize
     drawScreen()     
 }
 
-addEventListener("resize", sizeCanvas); // Event listener
-
-sizeCanvas();   // Begin the resize loop by creating canvas
-
 // // // // // // // // // // // Start page-specific code
 
 function drawScreen() {    // wrapper that gets called on resize event
 
     const backgroundColor = '#111111'
 
-    // draw foreground image
+drawForegroundImage()
+drawTriangleCutouts()
 
+function drawForegroundImage () {
     const c = new Image()                   
     c.src = "bostonSat.webp"   
     context.drawImage(c, 0, 0)
+}
+
 
 function drawTriangleCutouts (ratioMagnifier = 1.2) {
 
@@ -74,7 +77,7 @@ function drawTriangleCutouts (ratioMagnifier = 1.2) {
 }
 
 
-drawTriangleCutouts()
+
 
 
 //draw text
