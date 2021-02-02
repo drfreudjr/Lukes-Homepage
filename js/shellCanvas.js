@@ -40,10 +40,10 @@ function sizeCanvas () {                // Create or resize
 
 function drawScreen() {    // wrapper that gets called on resize event
 
-    const backgroundColor = '#111111'
+const backgroundColor = '#111111'
 
 drawForegroundImage()
-drawTriangleCutouts()
+drawTriangleCutouts(1.2)    // argument is size of triamgles from golden ratio
 
 function drawForegroundImage () {
     const c = new Image()                   
@@ -55,24 +55,25 @@ function drawForegroundImage () {
 function drawTriangleCutouts (ratioMagnifier = 1.2) {
 
     // THe golden ratio is peaceful - magnifier increases: 2.65 is erasure - 0 is no triangles
-    let goldenRatio = .382 
-    cutoutRatio = goldenRatio*ratioMagnifier
+
+    const GOLDENRATIO = .382 
+    cutoutRatio = GOLDENRATIO*ratioMagnifier
 
 
-    xWidth = Math.round(innerWidth*cutoutRatio)     //  set horizontal distance from top left corner
-    yHeight = Math.round(innerHeight*cutoutRatio)   //  set verticle distance from top left corner
+    triangleWidth = Math.round(innerWidth*cutoutRatio)     //  set horizontal distance from top left corner
+    triangleHeight = Math.round(innerHeight*cutoutRatio)   //  set verticle distance from top left corner
 
     context.fillStyle = backgroundColor // draw top triangle
     context.beginPath()             
-    context.moveTo(xWidth, 0)       // top right
+    context.moveTo(triangleWidth, 0)       // top right
     context.lineTo(0,0)             // top left corner
-    context.lineTo(0, yHeight)      // bottom left
+    context.lineTo(0, triangleHeight)      // bottom left
     context.fill()                  // draw (last path is implicit)
 
     context.beginPath()                     // draw bottom triangle
-    context.moveTo(innerWidth - xWidth, innerHeight)  // bottom left
+    context.moveTo(innerWidth - triangleWidth, innerHeight)  // bottom left
     context.lineTo(innerWidth,innerHeight)            // bottom right corner
-    context.lineTo(innerWidth, innerHeight - yHeight) // top right
+    context.lineTo(innerWidth, innerHeight - triangleHeight) // top right
     context.fill()
 }
 
