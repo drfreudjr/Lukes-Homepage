@@ -37,13 +37,11 @@ addEventListener("resize", sizeCanvas); // Event listener
 
 sizeCanvas();   // Begin the resize loop by creating canvas
 
-// // // // // // // // // // // Everything above here is responsive full-screen canvas - below is page-specific
+// // // // // // // // // // // Start page-specific code
 
-function drawScreen() {
+function drawScreen() {    // wrapper that gets called on resize event
 
     const backgroundColor = '#111111'
-    context.fillStyle = backgroundColor                     // set background color in case u want to use mask
-    context.fillRect(0, 0, innerWidth, innerHeight)         // try a mask varient and compare performance
 
     // draw foreground image
 
@@ -118,7 +116,7 @@ drawTriangleCutouts()
 
 
 
-}   //end drawScreen function
+}   //end drawScreen wrapper
 
 // requestAnimationFrame(draw);
 // setInterval(requestAnimationFrame(draw), 1000/60);
