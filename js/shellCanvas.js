@@ -1,5 +1,5 @@
 /*  Homepage for Luke Wilcox
-    Built 100% on canvas with dynamic resizing for window size
+    Built on 100% canvas with dynamic full-screen resizing
     by Dr Freudjr
  */
 
@@ -43,7 +43,13 @@ function drawScreen() {    // wrapper that gets called on resize event
 const backgroundColor = '#111111'
 
 drawForegroundImage()
-drawTriangleCutouts(1.2)    // argument is size of triamgles from golden ratio
+drawTriangles(1.4)    // argument is size of triamgles from golden ratio
+drawText()
+
+for (let i = 2.65; i > 0; i-=.1) {
+    cl(i)
+}
+
 
 function drawForegroundImage () {
     const c = new Image()                   
@@ -52,11 +58,13 @@ function drawForegroundImage () {
 }
 
 
-function drawTriangleCutouts (ratioMagnifier = 1.2) {
+function drawTriangles (ratioMagnifier = 1.2) {
 
-    // THe golden ratio is peaceful - magnifier increases: 2.65 is erasure - 0 is no triangles
+    // The golden ratio is peaceful - magnifier increases: 2.65 is erasure - 0 is no triangles
 
     const GOLDENRATIO = .382 
+
+
     cutoutRatio = GOLDENRATIO*ratioMagnifier
 
 
@@ -77,11 +85,7 @@ function drawTriangleCutouts (ratioMagnifier = 1.2) {
     context.fill()
 }
 
-
-
-
-
-//draw text
+function drawText () {
 
     function dynamicFontSize (originalFontSize = 55, originalCanvsSize = 1360) { // in design params/out adjusted font size
         percentOfFullSize = innerWidth/originalCanvsSize                                
@@ -112,15 +116,17 @@ function drawTriangleCutouts (ratioMagnifier = 1.2) {
     context.fillText('Luke Wilcox', 10, distanceFromTop)
     
     // cl(calculatedFont)
+    scaledDownRatio = .6
     context.fillStyle = "#7aa600"   //same color
-    calculatedFontString = (`${adjustedNonlinearFontSize*.7}px ${currentFont}`) //smaller font size for about me
+    calculatedFontString = (`${adjustedNonlinearFontSize*scaledDownRatio}px ${currentFont}`) //smaller font size for about me
     context.font = calculatedFontString
 
     context.fillText('About Me', 10, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
-
-
+}
 
 }   //end drawScreen wrapper
+
+
 
 // requestAnimationFrame(draw);
 // setInterval(requestAnimationFrame(draw), 1000/60);
