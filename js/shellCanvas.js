@@ -11,7 +11,7 @@ window.onload = function () {   // onload wrapper
 var canvas;        // Global canvas object reference
 var context;       // Global 2D context reference
 
-// // // // // // // // // // // // // // Begin Full-page canvas code
+// // // Begin dynamic fulls screen canvas code
 
 sizeCanvas()   // create initial canvas
 addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
@@ -43,8 +43,20 @@ function drawScreen() {    // wrapper that gets called on resize event
 const backgroundColor = '#111111'
 
 drawForegroundImage()
-drawTriangles(1.4)    // argument = adjust golden ratio
+drawTriangles(0)    // argument = adjust golden ratio
+drawTriangles(1)
 drawText()
+
+
+size = 0
+cl({size})
+function zoomToBlack () {
+    size +=.03
+    drawTriangles(size)
+    requestAnimationFrame(zoomToBlack)
+}
+ // requestAnimationFrame(zoomToBlack)
+// 
 
 
 function drawForegroundImage () {
