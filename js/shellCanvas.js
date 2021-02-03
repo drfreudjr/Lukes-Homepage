@@ -90,29 +90,28 @@ function drawTriangles (ratioMagnifier = 1.2) {
 
 function drawText () {
 
-    function dynamicFontSize (originalFontSize = 55, originalCanvsSize = 1360) { // in design params/out adjusted font size
+    function dynamicFontSize (originalFontSize = 55, originalCanvsSize = 1360) { // enter original design specs
         percentOfFullSize = innerWidth/originalCanvsSize                                
-        adjustedLinearFontSize = originalFontSize*percentOfFullSize                     //linear trnsform
+        adjustedLinearFontSize = originalFontSize*percentOfFullSize                     //linear transform
         adjustedNonlinearFontSize = originalFontSize /(1-Math.log(percentOfFullSize))   //nonlinear transform
         return(adjustedNonlinearFontSize)
     }
 
-    function dynamicHeightFromTop (originalDistanceFromTop = 80, originalCanvsSize = 1360) {
+    function dynamicHeightFromTop (originalDistanceFromTop = 80, originalCanvsSize = 1360) { // scales vertically
         percentOfFullSize = innerWidth/originalCanvsSize
         adjustedDistanceFromTop = originalDistanceFromTop*percentOfFullSize
         return(adjustedDistanceFromTop)
     }
 
     currentFont = 'Courier'
-    calculatedFont = dynamicFontSize(55, 1360)
+    calculatedFont = dynamicFontSize(55, 1360)          // original design specs
     distanceFromTop = dynamicHeightFromTop(80, 1360)
 
     calculatedFontString = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
-
     context.font = calculatedFontString                     // assign to the object
-    // cl(calculatedFontString)
+
     context.fillStyle = "#7aa600"                           // green pulled from picture
-    context.fillText('Luke Wilcox', 10, distanceFromTop)
+    context.fillText('Luke Wilcox', 10, distanceFromTop)    // statix x, dynamic y
     
     // cl(calculatedFont)
     scaledDownRatio = .6            // set subheadings as ratio of main heading
