@@ -1,6 +1,6 @@
 /*  Homepage for Luke Wilcox
     Built on 100% canvas with dynamic full-screen resizing
-    by Dr Freudjr
+    by Dr Freudjr 2/3/2021
  */
 
 // 'use strict';
