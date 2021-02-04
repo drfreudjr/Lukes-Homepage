@@ -47,17 +47,14 @@ drawTriangles(0)    // argument = adjust golden ratio
 drawTriangles(1)
 drawText()
 
+// zoomToBlack()
 
-size = 0
-cl({size})
-function zoomToBlack () {
+function zoomToBlack() {
     size +=.03
-    drawTriangles(size)
-    requestAnimationFrame(zoomToBlack)
+    if (size < 2.65)
+    // drawTriangles(size)
+    requestAnimationFrame(drawTriangles(size))
 }
- // requestAnimationFrame(zoomToBlack)
-// 
-
 
 function drawForegroundImage () {
     const c = new Image()                   
@@ -123,6 +120,7 @@ function drawText () {
 }   // end drawText
 
 }   //end drawScreen wrapper
+
 
 // requestAnimationFrame(draw);
 // setInterval(requestAnimationFrame(draw), 1000/60);
