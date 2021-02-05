@@ -3,6 +3,20 @@
     by Dr Freudjr 2/3/2021
  */
 
+// Global page object
+
+pageInfo = {
+
+    backgroundColor : '#111111',
+    GOLDENRATIO :.382,
+    ratioMagnifier : 1.2,
+
+}
+
+
+
+
+
 // 'use strict';
 const cl = console.log;
 
@@ -16,7 +30,9 @@ var context;       // Global 2D context reference
 sizeCanvas()   // create initial canvas
 addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
 
-function createCanvas () {                
+
+
+function createCanvas () {   
     const canvas = document.createElement("canvas"); 
     canvas.style.position = "absolute"; 
     canvas.style.left     = "0px";      
@@ -42,10 +58,7 @@ function drawScreen() {    // wrapper that gets called on resize event
 
 const backgroundColor = '#111111'
 
-drawForegroundImage()
-drawTriangles(0)    // argument = adjust golden ratio
-drawTriangles(1)
-drawText()
+
 
 // zoomToBlack()
 
@@ -62,11 +75,11 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles (ratioMagnifier = 1.2) {
+function drawTriangles () {
 
     // The golden ratio is peaceful - magnifier increases: 2.65 is erasure - 0 is no triangles
-    const GOLDENRATIO = .382 
-    cutoutRatio = GOLDENRATIO*ratioMagnifier
+
+    cutoutRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
 
     triangleWidth = Math.round(innerWidth*cutoutRatio)     //  set horizontal distance from top left corner
     triangleHeight = Math.round(innerHeight*cutoutRatio)   //  set verticle distance from top left corner
@@ -118,6 +131,10 @@ function drawText () {
 
     context.fillText('About Me', 10, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
 }   // end drawText
+
+drawForegroundImage()
+drawTriangles()    // argument = adjust golden ratio
+drawText()
 
 }   //end drawScreen wrapper
 
