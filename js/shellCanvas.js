@@ -6,15 +6,11 @@
 // Global page object
 
 pageInfo = {
-
     backgroundColor : '#111111',
-    GOLDENRATIO :.382,
-    ratioMagnifier : 1.2,
+    GOLDENRATIO :.382,    // The golden ratio is peaceful - magnifier increases trianglr size: 
+    ratioMagnifier : 1.2, // 2.65 is erasure - 0 is no triangles
 
 }
-
-
-
 
 
 // 'use strict';
@@ -29,8 +25,6 @@ var context;       // Global 2D context reference
 
 sizeCanvas()   // create initial canvas
 addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
-
-
 
 function createCanvas () {   
     const canvas = document.createElement("canvas"); 
@@ -58,17 +52,6 @@ function drawScreen() {    // wrapper that gets called on resize event
 
 const backgroundColor = '#111111'
 
-
-
-// zoomToBlack()
-
-function zoomToBlack() {
-    size +=.03
-    if (size < 2.65)
-    // drawTriangles(size)
-    requestAnimationFrame(drawTriangles(size))
-}
-
 function drawForegroundImage () {
     const c = new Image()                   
     c.src = "bostonSat.webp"   
@@ -76,8 +59,6 @@ function drawForegroundImage () {
 }
 
 function drawTriangles () {
-
-    // The golden ratio is peaceful - magnifier increases: 2.65 is erasure - 0 is no triangles
 
     cutoutRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
 
