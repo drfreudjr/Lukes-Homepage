@@ -8,7 +8,9 @@
 pageInfo = {
     backgroundColor : '#111111',
     GOLDENRATIO :.382,    // The golden ratio is peaceful - magnifier increases trianglr size: 
-    ratioMagnifier : 1.2, // 2.65 is erasure - 0 is no triangles
+    ratioMagnifier : 1.2, // 0 is no triangles /2.65 is erasure
+    triangleWidth : 0,
+    triangleHeight : 0,
 
 }
 
@@ -63,19 +65,22 @@ function drawTriangles () {
     cutoutRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
 
     triangleWidth = Math.round(innerWidth*cutoutRatio)     //  set horizontal distance from top left corner
+    pageInfo.triangleWidth = triangleWidth                 //  write to global object
     triangleHeight = Math.round(innerHeight*cutoutRatio)   //  set verticle distance from top left corner
+    pageInfo.triangleHeight = triangleHeight
+
 
     context.fillStyle = backgroundColor // draw top triangle
     context.beginPath()             
-    context.moveTo(triangleWidth, 0)       // top right
+    context.moveTo(pageInfo.triangleWidth, 0)       // top right
     context.lineTo(0,0)             // top left corner
-    context.lineTo(0, triangleHeight)      // bottom left
+    context.lineTo(0, pageInfo.triangleHeight)      // bottom left
     context.fill()                  // draw (last path is implicit)
 
     context.beginPath()                     // draw bottom triangle
-    context.moveTo(innerWidth - triangleWidth, innerHeight)  // bottom left
+    context.moveTo(innerWidth - pageInfo.triangleWidth, innerHeight)  // bottom left
     context.lineTo(innerWidth,innerHeight)            // bottom right corner
-    context.lineTo(innerWidth, innerHeight - triangleHeight) // top right
+    context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
     context.fill()
 }
 
