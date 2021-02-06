@@ -60,7 +60,7 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles () {
+function getTriangleWidthHeight() {
 
     cutoutRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
 
@@ -69,6 +69,9 @@ function drawTriangles () {
     triangleHeight = Math.round(innerHeight*cutoutRatio)   //  set verticle distance from top left corner
     pageInfo.triangleHeight = triangleHeight
 
+}
+
+function drawTriangles () {
 
     context.fillStyle = backgroundColor // draw top triangle
     context.beginPath()             
@@ -119,6 +122,7 @@ function drawText () {
 }   // end drawText
 
 drawForegroundImage()
+getTriangleWidthHeight()
 drawTriangles()    // argument = adjust golden ratio
 drawText()
 
