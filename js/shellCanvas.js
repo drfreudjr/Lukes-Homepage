@@ -6,7 +6,7 @@
  // 'use strict';
  const cl = console.log;
 
-pageInfo = {                        // Global object
+ pageInfo = {                       // Global object
     backgroundColor : '#111111',
     GOLDENRATIO :.382,              // The golden ratio is peaceful - magnifier increases trianglr size: 
     ratioMagnifier : 1.2,           // 0 is no triangles /2.65 is erasure
@@ -17,12 +17,12 @@ pageInfo = {                        // Global object
 
 window.onload = function () {       // onload wrapper
 
-var canvas;        // Global canvas object reference
-var context;       // Global 2D context reference
+var canvas;                         // Global canvas object reference
+var context;                        // Global 2D context reference
 
 // // // Begin dynamic fulls screen canvas code
 
-sizeCanvas()   // create initial canvas
+sizeCanvas()                        // create initial canvas
 addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
 
 function createCanvas () {   
@@ -47,7 +47,7 @@ function sizeCanvas () {                // Create or resize
 
 // // // // // // // // // // // Start page-specific code
 
-function drawScreen() {    // wrapper that gets called on resize event
+function drawScreen() {             // wrapper that gets called on resize event
 
 const backgroundColor = '#111111'
 
@@ -67,14 +67,14 @@ function getTriangleWidthHeight() {
 
 function drawTriangles () {
 
-    context.fillStyle = backgroundColor // draw top triangle
+    context.fillStyle = backgroundColor             // draw top triangle
     context.beginPath()             
     context.moveTo(pageInfo.triangleWidth, 0)       // top right
-    context.lineTo(0,0)             // top left corner
+    context.lineTo(0,0)                             // top left corner
     context.lineTo(0, pageInfo.triangleHeight)      // bottom left
-    context.fill()                  // draw (last path is implicit)
+    context.fill()                                  // draw (last path is implicit)
 
-    context.beginPath()                     // draw bottom triangle
+    context.beginPath()                             // draw bottom triangle
     context.moveTo(innerWidth - pageInfo.triangleWidth, innerHeight)  // bottom left
     context.lineTo(innerWidth,innerHeight)            // bottom right corner
     context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
@@ -115,7 +115,10 @@ function drawText () {
     context.fillText('About Me', 10, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
 }   // end drawText
 
-function closeWindow() {
+function closeBars() {
+    for (i = 0; i < 2.65; i += .05) {
+        
+    }
 
 }
 
@@ -123,9 +126,6 @@ drawForegroundImage()
 getTriangleWidthHeight()
 drawTriangles()
 drawText()
-
-
-
 
 }   //end drawScreen wrapper
 }   // end onload wrapper
