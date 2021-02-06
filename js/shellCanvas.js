@@ -6,12 +6,13 @@
  // 'use strict';
  const cl = console.log;
 
-pageInfo = {                        // Global page object
+pageInfo = {                        // Global object
     backgroundColor : '#111111',
     GOLDENRATIO :.382,              // The golden ratio is peaceful - magnifier increases trianglr size: 
     ratioMagnifier : 1.2,           // 0 is no triangles /2.65 is erasure
     triangleWidth : null,
     triangleHeight : null,
+    finalRatio : null,
 }
 
 window.onload = function () {       // onload wrapper
@@ -58,13 +59,10 @@ function drawForegroundImage () {
 
 function getTriangleWidthHeight() {
 
-    cutoutRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
+    pageInfo.finalRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
 
-    triangleWidth = Math.round(innerWidth*cutoutRatio)     //  set horizontal distance from top left corner
-    pageInfo.triangleWidth = triangleWidth                 //  write to global object
-    triangleHeight = Math.round(innerHeight*cutoutRatio)   //  set verticle distance from top left corner
-    pageInfo.triangleHeight = triangleHeight
-
+    pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
+    pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)   //  set verticle distance from top left corner
 }
 
 function drawTriangles () {
@@ -116,6 +114,10 @@ function drawText () {
 
     context.fillText('About Me', 10, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
 }   // end drawText
+
+function closeWindow() {
+
+}
 
 drawForegroundImage()
 getTriangleWidthHeight()
