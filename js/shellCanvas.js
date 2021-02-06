@@ -12,7 +12,7 @@
     ratioMagnifier : 1.2,           // 0 is no triangles /2.65 is erasure
     triangleWidth : null,
     triangleHeight : null,
-    finalRatio : null,
+    // finalRatio : null,
 }
 
 window.onload = function () {       // onload wrapper
@@ -45,7 +45,7 @@ function sizeCanvas () {                // Create or resize
     drawScreen()     
 }
 
-// // // // // // // // // // // Start page-specific code
+// // // // // // // // // // // Page-specific code
 
 function drawScreen() {             // wrapper that gets called on resize event
 
@@ -57,15 +57,11 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function getTriangleWidthHeight() {
+function drawTriangles (modifier = pageInfo.ratioMagnifier) {  // default is initial skew
 
-    pageInfo.finalRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
-
+    pageInfo.finalRatio = pageInfo.GOLDENRATIO*modifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
-    pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)   //  set verticle distance from top left corner
-}
-
-function drawTriangles () {
+    pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
 
     context.fillStyle = backgroundColor             // draw top triangle
     context.beginPath()             
@@ -119,11 +115,9 @@ function closeBars() {
     for (i = 0; i < 2.65; i += .05) {
         
     }
-
 }
 
 drawForegroundImage()
-getTriangleWidthHeight()
 drawTriangles()
 drawText()
 
