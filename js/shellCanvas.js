@@ -15,10 +15,11 @@
     triangleHeight : null,
 }
 
-window.onload = function () {           // onload wrapper
 
+window.onload = function () {           // onload wrapper
+                                        // Global 2D context reference
 var canvas;                             // Global canvas object reference
-var context;                            // Global 2D context reference
+var context; 
 
 // // Begin dynamic fulls screen canvas code
 
@@ -55,9 +56,9 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles (ratiomodifier = pageInfo.ratioMagnifier) {       // default is initial skew
+function drawTriangles (ratioMagnifier = pageInfo.ratioMagnifier) {       // default is initial skew
 
-    pageInfo.finalRatio = pageInfo.GOLDENRATIO*ratioModifier
+    pageInfo.finalRatio = pageInfo.GOLDENRATIO*ratioMagnifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
 
