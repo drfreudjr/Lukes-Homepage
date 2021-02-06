@@ -12,7 +12,6 @@
     ratioMagnifier : 1.2,           // 0 is no triangles /2.65 is erasure
     triangleWidth : null,
     triangleHeight : null,
-    // finalRatio : null,
 }
 
 window.onload = function () {       // onload wrapper
@@ -49,8 +48,6 @@ function sizeCanvas () {                // Create or resize
 
 function drawScreen() {             // wrapper that gets called on resize event
 
-const backgroundColor = '#111111'
-
 function drawForegroundImage () {
     const c = new Image()                   
     c.src = "bostonSat.webp"   
@@ -58,12 +55,12 @@ function drawForegroundImage () {
 }
 
 function drawTriangles (modifier = pageInfo.ratioMagnifier) {  // default is initial skew
-
+    cl(modifier)
     pageInfo.finalRatio = pageInfo.GOLDENRATIO*modifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
 
-    context.fillStyle = backgroundColor             // draw top triangle
+    context.fillStyle = pageInfo.backgroundColor             // draw top triangle
     context.beginPath()             
     context.moveTo(pageInfo.triangleWidth, 0)       // top right
     context.lineTo(0,0)                             // top left corner
@@ -111,15 +108,12 @@ function drawText () {
     context.fillText('About Me', 10, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
 }   // end drawText
 
-function closeBars() {
-    for (i = 0; i < 2.65; i += .05) {
-        
-    }
-}
-
 drawForegroundImage()
 drawTriangles()
 drawText()
+
+
+
 
 }   //end drawScreen wrapper
 }   // end onload wrapper
