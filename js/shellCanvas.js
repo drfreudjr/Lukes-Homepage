@@ -3,22 +3,18 @@
     by Dr Freudjr 2/3/2021
  */
 
-// Global page object
+ // 'use strict';
+ const cl = console.log;
 
-pageInfo = {
+pageInfo = {                        // Global page object
     backgroundColor : '#111111',
-    GOLDENRATIO :.382,    // The golden ratio is peaceful - magnifier increases trianglr size: 
-    ratioMagnifier : 1.2, // 0 is no triangles /2.65 is erasure
-    triangleWidth : 0,
-    triangleHeight : 0,
-
+    GOLDENRATIO :.382,              // The golden ratio is peaceful - magnifier increases trianglr size: 
+    ratioMagnifier : 1.2,           // 0 is no triangles /2.65 is erasure
+    triangleWidth : null,
+    triangleHeight : null,
 }
 
-
-// 'use strict';
-const cl = console.log;
-
-window.onload = function () {   // onload wrapper
+window.onload = function () {       // onload wrapper
 
 var canvas;        // Global canvas object reference
 var context;       // Global 2D context reference
@@ -123,13 +119,11 @@ function drawText () {
 
 drawForegroundImage()
 getTriangleWidthHeight()
-drawTriangles()    // argument = adjust golden ratio
+drawTriangles()
 drawText()
 
+
+
+
 }   //end drawScreen wrapper
-
-
-// requestAnimationFrame(draw);
-// setInterval(requestAnimationFrame(draw), 1000/60);
-
 }   // end onload wrapper
