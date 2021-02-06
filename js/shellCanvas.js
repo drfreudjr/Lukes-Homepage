@@ -1,23 +1,23 @@
-/*  Homepage for Luke Wilcox
+/*  Homepage for Luke Wilcox - my super genius nephew :)
     Built on 100% canvas with dynamic full-screen resizing
-    by Dr Freudjr 
+    by Dr Freudjr https://drfreudjr.github.io/
  */
 
  // 'use strict';
  const cl = console.log;
 
- pageInfo = {                       // Global object
+ pageInfo = {                           // Global object
     backgroundColor : '#111111',
-    GOLDENRATIO :.382,              // The golden ratio is peaceful - magnifier increases trianglr size: 
-    ratioMagnifier : 1.2,           // 0 is no triangles /2.65 is erasure
+    GOLDENRATIO :.382,                  // The golden ratio is peaceful - magnifier increases trianglr size: 
+    ratioMagnifier : 1.2,               // 0 is no triangles /2.65 is erasure
     triangleWidth : null,
     triangleHeight : null,
 }
 
-window.onload = function () {       // onload wrapper
+window.onload = function () {           // onload wrapper
 
-var canvas;                         // Global canvas object reference
-var context;                        // Global 2D context reference
+var canvas;                             // Global canvas object reference
+var context;                            // Global 2D context reference
 
 // // Begin dynamic fulls screen canvas code
 
@@ -46,7 +46,7 @@ function sizeCanvas () {                // Create or resize
 
 // // Page-specific code
 
-function drawScreen() {             // wrapper that gets called on resize event
+function drawScreen() {                 // wrapper that gets called on resize event
 
 function drawForegroundImage () {
     const c = new Image()                   
@@ -54,13 +54,13 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles (modifier = pageInfo.ratioMagnifier) {  // default is initial skew
+function drawTriangles (modifier = pageInfo.ratioMagnifier) {       // default is initial skew
     cl(modifier)
     pageInfo.finalRatio = pageInfo.GOLDENRATIO*modifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
 
-    context.fillStyle = pageInfo.backgroundColor             // draw top triangle
+    context.fillStyle = pageInfo.backgroundColor                    // draw top triangle
     context.beginPath()             
     context.moveTo(pageInfo.triangleWidth, 0)       // top right
     context.lineTo(0,0)                             // top left corner
@@ -69,7 +69,7 @@ function drawTriangles (modifier = pageInfo.ratioMagnifier) {  // default is ini
 
     context.beginPath()                             // draw bottom triangle
     context.moveTo(innerWidth - pageInfo.triangleWidth, innerHeight)  // bottom left
-    context.lineTo(innerWidth,innerHeight)            // bottom right corner
+    context.lineTo(innerWidth,innerHeight)          // bottom right corner
     context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
     context.fill()
 }
@@ -90,7 +90,7 @@ function drawText () {
     }
 
     currentFont = 'Courier'
-    calculatedFont = dynamicFontSize(55, 1360)          // original design specs
+    calculatedFont = dynamicFontSize(55, 1360)              // original design specs
     distanceFromTop = dynamicHeightFromTop(80, 1360)
 
     calculatedFontString = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
