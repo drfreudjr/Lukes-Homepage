@@ -11,7 +11,7 @@
     backgroundImage : "bostonSat.webp",
     GOLDENRATIO :.382,                  // The golden ratio is peaceful - magnifier increases blockout
     ratioMagnifier : 1.2,               // 0 is no triangles /2.65 is erasure
-    triangleWidth : null,
+    triangleWidth : null,               // these are calculated 
     triangleHeight : null,
 }
 
@@ -55,9 +55,9 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles (modifier = pageInfo.ratioMagnifier) {       // default is initial skew
+function drawTriangles (ratiomodifier = pageInfo.ratioMagnifier) {       // default is initial skew
 
-    pageInfo.finalRatio = pageInfo.GOLDENRATIO*modifier
+    pageInfo.finalRatio = pageInfo.GOLDENRATIO*ratioModifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
 
@@ -100,8 +100,7 @@ function drawText () {
     context.fillStyle = "#7aa600"                           // green pulled from picture
     context.fillText('Luke Wilcox', 10, distanceFromTop)    // statix x, dynamic y
     
-    // cl(calculatedFont)
-    scaledDownRatio = .6            // set subheadings as ratio of main heading
+    scaledDownRatio = .6            // set subheadings as ratio of main heading // this is a hack Jason
     context.fillStyle = "#7aa600"   //same color
     calculatedFontString = (`${adjustedNonlinearFontSize*scaledDownRatio}px ${currentFont}`) //smaller font size for about me
     context.font = calculatedFontString
@@ -113,5 +112,5 @@ drawForegroundImage()
 drawTriangles()
 drawText()
 
-}   //end drawScreen wrapper
+}   // end drawScreen wrapper
 }   // end onload wrapper
