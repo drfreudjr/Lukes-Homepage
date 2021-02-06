@@ -8,7 +8,8 @@
 
  pageInfo = {                           // Global object
     backgroundColor : '#111111',
-    GOLDENRATIO :.382,                  // The golden ratio is peaceful - magnifier increases trianglr size: 
+    backgroundImage : "bostonSat.webp",
+    GOLDENRATIO :.382,                  // The golden ratio is peaceful - magnifier increases blockout
     ratioMagnifier : 1.2,               // 0 is no triangles /2.65 is erasure
     triangleWidth : null,
     triangleHeight : null,
@@ -49,8 +50,8 @@ function sizeCanvas () {                // Create or resize
 function drawScreen() {                 // wrapper that gets called on resize event
 
 function drawForegroundImage () {
-    const c = new Image()                   
-    c.src = "bostonSat.webp"   
+    const backgroundImage = new Image()                   
+    backgroundImage.src = pageInfo.backgroundImage   
     context.drawImage(c, 0, 0)
 }
 
