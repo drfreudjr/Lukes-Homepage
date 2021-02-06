@@ -56,7 +56,7 @@ function drawForegroundImage () {
 }
 
 function drawTriangles (modifier = pageInfo.ratioMagnifier) {       // default is initial skew
-    cl(modifier)
+
     pageInfo.finalRatio = pageInfo.GOLDENRATIO*modifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
