@@ -1,6 +1,6 @@
 /*  Homepage for Luke Wilcox
     Built on 100% canvas with dynamic full-screen resizing
-    by Dr Freudjr 2/3/2021
+    by Dr Freudjr 
  */
 
  // 'use strict';
@@ -19,9 +19,9 @@ window.onload = function () {       // onload wrapper
 var canvas;                         // Global canvas object reference
 var context;                        // Global 2D context reference
 
-// // // Begin dynamic fulls screen canvas code
+// // Begin dynamic fulls screen canvas code
 
-sizeCanvas()                        // create initial canvas
+sizeCanvas()                            // create initial canvas
 addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
 
 function createCanvas () {   
@@ -44,7 +44,7 @@ function sizeCanvas () {                // Create or resize
     drawScreen()     
 }
 
-// // // // // // // // // // // Page-specific code
+// // Page-specific code
 
 function drawScreen() {             // wrapper that gets called on resize event
 
@@ -111,9 +111,6 @@ function drawText () {
 drawForegroundImage()
 drawTriangles()
 drawText()
-
-
-
 
 }   //end drawScreen wrapper
 }   // end onload wrapper
