@@ -92,26 +92,25 @@ function drawText () {
     }
 
     currentFont = 'Courier'
+    
     calculatedFont = dynamicFontSize(55, 1360)              // original design specs
     distanceFromTop = dynamicHeightFromTop(80, 1360)
-
-    calculatedFontString = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
-    context.font = calculatedFontString                     // assign to the object
+    
+    context.font = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
 
     context.fillStyle = "#7aa600"                           // green pulled from picture
     context.fillText('Luke Wilcox', 10, distanceFromTop)    // statix x, dynamic y
     
     scaledDownRatio = .6            // set subheadings as ratio of main heading // this is a hack Jason
-    context.fillStyle = "#7aa600"   //same color
-    calculatedFontString = (`${adjustedNonlinearFontSize*scaledDownRatio}px ${currentFont}`) //smaller font size for about me
-    context.font = calculatedFontString
+    context.font = (`${adjustedNonlinearFontSize*scaledDownRatio}px ${currentFont}`) //smaller font size for about me
 
     context.fillText('About Me', 10, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
 }   // end drawText
 
-drawForegroundImage()
-drawTriangles()
-drawText()
+    drawForegroundImage()
+    drawTriangles()
+    drawText()
+
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
