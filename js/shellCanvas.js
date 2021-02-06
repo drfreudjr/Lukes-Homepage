@@ -50,7 +50,7 @@ function sizeCanvas () {                // Create or resize
 
 // // Page-specific code
 
-function drawScreen() {                 // wrapper that gets called on resize event
+function drawScreen() {                                                         // wrapper that gets called on resize event
 
 function drawForegroundImage () {
     const backgroundImage = new Image()                   
@@ -58,13 +58,13 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles (ratioMagnifier = pageInfo.ratioMagnifier) {       // default is initial skew
+function drawTriangles (ratioMagnifier = pageInfo.ratioMagnifier) {             // default is initial skew
 
     pageInfo.finalRatio = pageInfo.GOLDENRATIO*ratioMagnifier
-    pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)     //  set horizontal distance from top left corner
+    pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)         //  set horizontal distance from top left corner
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
 
-    context.fillStyle = pageInfo.backgroundColor                    // draw top triangle
+    context.fillStyle = pageInfo.backgroundColor    // draw top triangle
     context.beginPath()             
     context.moveTo(pageInfo.triangleWidth, 0)       // top right
     context.lineTo(0,0)                             // top left corner
@@ -100,13 +100,13 @@ function drawText () {
     
     context.font = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
 
-    context.fillStyle = 'white'                         // green pulled from picture
-    context.fillText('Luke Wilcox', 10, distanceFromTop)    // statix x, dynamic y
+    context.fillStyle = 'white'                                             // green pulled from picture
+    context.fillText('Luke Wilcox', 10, distanceFromTop)                    // statix x, dynamic y
     
-    scaledDownRatio = .6            // set subheadings as ratio of main heading // this is a hack Jason
+    scaledDownRatio = .6                                                    // set subheadings as ratio of main heading // this is a hack Jason
     context.font = (`${adjustedNonlinearFontSize*scaledDownRatio}px ${currentFont}`) //smaller font size for about me
 
-    context.fillText('About Me', 10, distanceFromTop + calculatedFont) // place it beneath 'luke wilcox'
+    context.fillText('About Me', 10, distanceFromTop + calculatedFont)      // place it beneath 'luke wilcox'
 }   // end drawText
 
     drawForegroundImage()
