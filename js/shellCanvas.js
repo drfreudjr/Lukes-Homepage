@@ -1,14 +1,16 @@
+ const cl = console.log;
 /*  Homepage for Luke Wilcox - my super genius nephew :)
     Built on 100% canvas with dynamic full-screen resizing
     by Dr Freudjr https://drfreudjr.github.io/
  */
 
  // 'use strict';
- const cl = console.log;
+
 
  pageInfo = {                           // Global object
     backgroundColor : '#111111',
     backgroundImage : "bostonSat.webp",
+    textColor : 'white',
     GOLDENRATIO :.382,                  // The golden ratio is peaceful - magnifier increases blockout
     ratioMagnifier : 1.2,               // 0 is no triangles /2.65 is erasure
     triangleWidth : null,               // these are calculated 
@@ -92,13 +94,13 @@ function drawText () {
     }
 
     currentFont = 'Courier'
-    
+
     calculatedFont = dynamicFontSize(55, 1360)              // original design specs
     distanceFromTop = dynamicHeightFromTop(80, 1360)
     
     context.font = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
 
-    context.fillStyle = "#7aa600"                           // green pulled from picture
+    context.fillStyle = 'white'                         // green pulled from picture
     context.fillText('Luke Wilcox', 10, distanceFromTop)    // statix x, dynamic y
     
     scaledDownRatio = .6            // set subheadings as ratio of main heading // this is a hack Jason
