@@ -80,9 +80,9 @@ function drawTriangles () {
     cl(pageInfo.animation, pageInfo.ratioModifier)
 
     if (pageInfo.animation == true && pageInfo.ratioModifier < 2.7) {  // dynamically clears screen
-        speed = .1                                  // try to get acceleration going
-        pageInfo.ratioModifier += (speed)
+        pageInfo.ratioModifier += .1
         requestAnimationFrame(drawTriangles)
+
     }
 }
 
