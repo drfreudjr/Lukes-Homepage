@@ -14,7 +14,7 @@ const cl = console.log;
     ratioModifier : 1.2,                // 0 is no triangles  2.551 is erasure
     triangleWidth : null,               // these are calculated in first drawTriangle function call
     triangleHeight : null,
-    animation : true,
+    animation : 'close',
     speed : 1,                        // speed at which triangles change
     clickableBox: {x: null, y: null, dx: null, dy: null}   // xy coords then delta xy
 
@@ -81,7 +81,7 @@ function drawTriangles () {
 
     cl(pageInfo.animation, pageInfo.ratioModifier)
 
-    if (pageInfo.animation == true && pageInfo.ratioModifier < 2.551) {  // dynamically clears screen
+    if (pageInfo.animation == 'close' && pageInfo.ratioModifier < 2.551) {  // dynamically clears screen
         pageInfo.ratioModifier += .01/pageInfo.speed
         requestAnimationFrame(drawTriangles)
         pageInfo.speed -= .0155
