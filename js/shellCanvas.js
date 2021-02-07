@@ -16,6 +16,7 @@ const cl = console.log;
     triangleWidth : null,               // these are calculated 
     triangleHeight : null,
     animation : false,
+    clickableBox: {x:null,y:null,dx:null,dy:null}             // xy coords then delta xy
 }
 
 
@@ -106,6 +107,8 @@ function drawText () {
 
     calculatedFont = dynamicFontSize(55, 1360)              // original design specs
     distanceFromTop = dynamicHeightFromTop(80, 1360)
+
+    cl(distanceFromTop)
     
     context.font = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
 
@@ -116,6 +119,14 @@ function drawText () {
     context.font = (`${adjustedNonlinearFontSize*scaledDownRatio}px ${currentFont}`) //smaller font size for about me
 
     context.fillText('About Me', 10, distanceFromTop + calculatedFont)      // place it beneath 'luke wilcox'
+
+                        // get clickable box coordinates
+
+    pageInfo.clickableBox.x = 10        // this one's easy!
+    pageInfo.clickableBox.y = distanceFromTop+ calculatedFont   // I think this is right
+    pageInfo.clickableBox.dx = pageInfo.clickableBox.x + 0  // placeholder
+    pageInfo.clickableBox.dy = pageInfo.clickableBox.y + 0  // placeholder
+
 }   // end drawText
 
     drawForegroundImage()
