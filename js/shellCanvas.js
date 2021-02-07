@@ -10,7 +10,7 @@ const cl = console.log;
  pageInfo = {                           // Global object
     backgroundColor : '#111111',
     backgroundImage : "bostonSat.webp",
-    textColor : 'white',
+    textColor : '#7aa600',
     GOLDENRATIO :.382,                  // The golden ratio is peaceful - magnifier increases blockout
     ratioMagnifier : 1.2,               // 0 is no triangles /2.65 is erasure
     triangleWidth : null,               // these are calculated 
@@ -112,7 +112,7 @@ function drawText () {
     
     context.font = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
 
-    context.fillStyle = 'white'                                             // green pulled from picture
+    context.fillStyle = pageInfo.textColor                                             // green pulled from picture
     context.fillText('Luke Wilcox', 10, distanceFromTop)                    // statix x, dynamic y
     
     scaledDownRatio = .6                                                    // set subheadings as ratio of main heading // this is a hack Jason
@@ -120,12 +120,16 @@ function drawText () {
 
     context.fillText('About Me', 10, distanceFromTop + calculatedFont)      // place it beneath 'luke wilcox'
 
-                        // get clickable box coordinates
+                    // get clickable box coordinates
 
-    pageInfo.clickableBox.x = 10        // this one's easy!
-    pageInfo.clickableBox.y = distanceFromTop+ calculatedFont   // I think this is right
-    pageInfo.clickableBox.dx = pageInfo.clickableBox.x + 0  // placeholder
-    pageInfo.clickableBox.dy = pageInfo.clickableBox.y + 0  // placeholder
+    pageInfo.clickableBox.x = 10                                    // this one's easy!
+    pageInfo.clickableBox.y = distanceFromTop + calculatedFont      // I think this is right
+    pageInfo.clickableBox.dx = pageInfo.clickableBox.x + (8*1)      // length of text times some fraction of calculated font size (cfs)
+    pageInfo.clickableBox.dy = pageInfo.clickableBox.y + 0          // multiply by some fraction of cfs
+
+
+
+
 
 }   // end drawText
 
