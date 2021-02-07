@@ -14,7 +14,9 @@ const cl = console.log;
     triangleHeight : null,
     animation : 'open',
     speed : 1,                        // speed at which triangles change
-    stopDrawingAt: null,  
+    stopDrawingAt: null,
+    whoAmI: "Luke Wilcox",
+    navOneContent: "About Me" 
 }
 
 window.onload = function () {           // onload wrapper
@@ -102,11 +104,11 @@ function drawTriangles () {
         return(adjustedNonlinearFontSize)
     }
 
-    function dynamicHeightFromTop (originalDistanceFromTop = 80, originalCanvsSize = 1360) { // scales vertically
-        percentOfFullSize = innerWidth/originalCanvsSize
-        adjustedDistanceFromTop = originalDistanceFromTop*percentOfFullSize
-        return(adjustedDistanceFromTop)
-    }
+    // function dynamicHeightFromTop (originalDistanceFromTop = 80, originalCanvsSize = 1360) { // scales vertically
+    //     percentOfFullSize = innerWidth/originalCanvsSize
+    //     adjustedDistanceFromTop = originalDistanceFromTop*percentOfFullSize
+    //     return(adjustedDistanceFromTop)
+    // }  // archive this code
 
 
     function openingAnimation () {
@@ -136,16 +138,24 @@ function drawTriangles () {
 function createName () {
 
         let name = document.createElement('div');
-        name.id = 'content';
-        name.innerHTML = 'Luke Wilcox';
+        name.id = 'nameStyle';
+        name.innerHTML = pageInfo.whoAmI;
         name.style.fontSize = dynamicFontSize() + 'px'
         cl(name.style.fontSize)
-        document.body.appendChild(name);
-
-
-
+        document.body.appendChild(name)
 }
-setTimeout(createName, 5000)
+
+function createNav1 () {
+
+        let navOne = document.createElement('div');
+        navOne.id = 'navOneStyle';
+        navOne.innerHTML = pageInfo.navOneContent;
+        navOne.style.fontSize = dynamicFontSize()*0.8 + 'px' // 0.6 hack
+        cl(navOne.style.fontSize)
+        document.body.appendChild(navOne)
+}
+setTimeout(createName, 4000)
+setTimeout(createNav1, 6000)
 
 
 }   // end drawScreen wrapper

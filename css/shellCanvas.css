@@ -1,16 +1,23 @@
 /* Shell CSS file */
 
-body 	{background-color: Turquoise;
+body 	{background-color: "#7aa600";
+        color: yellow;
 	}
 
-#content {
+#nameStyle {
     color: yellow;
     position: absolute;
     left: 3%;
-    top: 10%;
+    top: 5%;
 }
 
 
+#navOneStyle {
+    color: yellow;
+    position: absolute;
+    left:3%;
+    top: 14%;
 
+}
 
 
