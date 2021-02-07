@@ -1,4 +1,4 @@
- const cl = console.log;
+const cl = console.log;
 /*  Homepage for Luke Wilcox - my super genius nephew :)
     Built on 100% canvas with dynamic full-screen resizing
     by Dr Freudjr https://drfreudjr.github.io/
@@ -15,6 +15,7 @@
     ratioMagnifier : 1.2,               // 0 is no triangles /2.65 is erasure
     triangleWidth : null,               // these are calculated 
     triangleHeight : null,
+    animation : false,
 }
 
 
@@ -58,11 +59,11 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles (ratioMagnifier = pageInfo.ratioMagnifier) {             // default is initial skew
+function drawTriangles () {             
 
-    pageInfo.finalRatio = pageInfo.GOLDENRATIO*ratioMagnifier
-    pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)         //  set horizontal distance from top left corner
-    pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)
+    pageInfo.finalRatio = pageInfo.GOLDENRATIO*pageInfo.ratioMagnifier
+    pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)         // set horizontal distance from top left
+    pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)       // set vertical distance from top left
 
     context.fillStyle = pageInfo.backgroundColor    // draw top triangle
     context.beginPath()             
@@ -76,6 +77,12 @@ function drawTriangles (ratioMagnifier = pageInfo.ratioMagnifier) {             
     context.lineTo(innerWidth,innerHeight)          // bottom right corner
     context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
     context.fill()
+
+    if (pageInfo.animate = true && pageInfo.ratioMagnifier < 2.7) {
+        speed = .01
+        pageInfo.ratioMagnifier += (speed)
+        requestAnimationFrame(drawTriangles)
+    }
 }
 
 function drawText () {
@@ -112,6 +119,12 @@ function drawText () {
     drawForegroundImage()
     drawTriangles()
     drawText()
+
+function blackout () {
+    pageInfo.animate = true
+
+}
+
 
 
 }   // end drawScreen wrapper
