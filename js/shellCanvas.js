@@ -16,6 +16,7 @@ const cl = console.log;
     triangleHeight : null,
     animation : 'open',
     speed : 1,                        // speed at which triangles change
+    stopDrawingAt: null,
     clickableBox: {x: null, y: null, dx: null, dy: null}   // xy coords then delta xy
 
 }
@@ -60,8 +61,9 @@ function drawForegroundImage () {
     context.drawImage(c, 0, 0)
 }
 
-function drawTriangles () {             
-    context.drawImage(c, 0, 0)  // redraw image
+function drawTriangles () { 
+
+    context.drawImage(c, 0, 0)  // redraw image this needed when subtracting rectangles
     pageInfo.finalRatio = pageInfo.GOLDENRATIO*pageInfo.ratioModifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)         // set horizontal distance from top left
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)       // set vertical distance from top left
@@ -88,11 +90,7 @@ function drawTriangles () {
         pageInfo.speed -= .0155     // changes global object so this builds
     }
 
-    if (pageInfo.animation == 'open' && pageInfo.ratioModifier > 0) {  // dynamically clears screen
-        // context.clearRect(0, 0, canvas.width, canvas.height);
-        // canvas.width = canvas.width
-        // context.drawImage(c, 0, 0)  // redraw image
-        // pageInfo.backgroundColor = 'yellow'
+    if (pageInfo.animation == 'open' && pageInfo.ratioModifier > pageInfo.stopDrawingAt) {  // dynamically clears screen
         pageInfo.ratioModifier -= .01/pageInfo.speed
         requestAnimationFrame(drawTriangles)
         pageInfo.speed -= .001
@@ -140,8 +138,17 @@ function drawText () {
 
 }   // end drawText
 
+    function openingAnimation () {
+        pageInfo.ratioModifier = 2.55        // fully black
+        pageInfo.stopDrawingAt = 1.2
+        animation = open
+        drawTriangles()
+
+    }
+
     drawForegroundImage()
-    drawTriangles()
+    openingAnimation()
+    // drawTriangles()
     drawText()
 
 }   // end drawScreen wrapper
