@@ -4,8 +4,6 @@ const cl = console.log;
     by Dr Freudjr https://drfreudjr.github.io/
  */
 
- 'use strict'
-
  pageInfo = {                           // Global object
     backgroundColor : '#111111',
     backgroundImage : "bostonSat.webp",
@@ -17,6 +15,7 @@ const cl = console.log;
     animation : 'open',
     speed : 1,                        // speed at which triangles change
     stopDrawingAt: null,
+    drawOpeningAnimation: true,
     clickableBox: {x: null, y: null, dx: null, dy: null}   // xy coords then delta xy
 
 }
@@ -153,8 +152,14 @@ function drawText () {
 
     drawSolidBackground()
     // drawForegroundImage()
-    setTimeout (openingAnimation, 500)
+    cl(pageInfo.drawOpeningAnimation)
+    if (pageInfo.drawOpeningnAnimation = true) {
+        pageInfo.drawOpeningAnimation = false   // flag for only doing this once
+        // cl(here)
+        setTimeout (openingAnimation, 500)
+    }
+
     // drawTriangles()
-    setTimeout (drawText, 4000)
+    setTimeout (drawText, 3000)
 }   // end drawScreen wrapper
 }   // end onload wrapper
