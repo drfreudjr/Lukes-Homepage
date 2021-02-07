@@ -14,10 +14,7 @@ const cl = console.log;
     triangleHeight : null,
     animation : 'open',
     speed : 1,                        // speed at which triangles change
-    stopDrawingAt: null,
-    drawOpeningAnimation: true,
-    clickableBox: {x: null, y: null, dx: null, dy: null}   // xy coords then delta xy
-
+    stopDrawingAt: null,  
 }
 
 window.onload = function () {           // onload wrapper
@@ -74,8 +71,6 @@ function drawTriangles () {
     context.lineTo(0, pageInfo.triangleHeight)      // bottom left
     context.fill()                                  // draw (last path is implicit)
 
-    cl(pageInfo.triangleWidth)
-
     context.beginPath()                             // draw bottom triangle
     context.moveTo(innerWidth - pageInfo.triangleWidth, innerHeight)  // bottom left
     context.lineTo(innerWidth,innerHeight)          // bottom right corner
@@ -98,7 +93,7 @@ function drawTriangles () {
     }
 }
 
-function drawText () {
+// // Text
 
     function dynamicFontSize (originalFontSize = 55, originalCanvsSize = 1360) {        // enter original design specs
         percentOfFullSize = innerWidth/originalCanvsSize                                
@@ -113,29 +108,6 @@ function drawText () {
         return(adjustedDistanceFromTop)
     }
 
-    currentFont = 'Courier'
-
-    calculatedFont = dynamicFontSize(55, 1360)                              // original design specs
-    distanceFromTop = dynamicHeightFromTop(80, 1360)
-
-    context.font = (`${adjustedNonlinearFontSize}px ${currentFont}`)        //string creation
-
-    context.fillStyle = pageInfo.textColor                                  
-    context.fillText('Luke Wilcox', 10, distanceFromTop)                    // statix x, dynamic y
-    
-    scaledDownRatio = .6                                                    // set subheadings as ratio of main heading // this is a hack Jason
-    context.font = (`${adjustedNonlinearFontSize*scaledDownRatio}px ${currentFont}`) //smaller font size for about me
-
-    context.fillText('About Me', 10, distanceFromTop + calculatedFont)      // place it beneath 'luke wilcox'
-
-                    // calculate clickable box coordinates
-
-    pageInfo.clickableBox.x = 10                                    // this one's easy!
-    pageInfo.clickableBox.y = distanceFromTop + calculatedFont      // I think this is right
-    pageInfo.clickableBox.dx = pageInfo.clickableBox.x + (8*1)      // length of text times some fraction of calculated font size (cfs)
-    pageInfo.clickableBox.dy = pageInfo.clickableBox.y + 0          // multiply by some fraction of cfs
-
-}   // end drawText
 
     function openingAnimation () {
         pageInfo.ratioModifier = 2.55        // fully black
@@ -152,14 +124,29 @@ function drawText () {
 
     drawSolidBackground()
     // drawForegroundImage()
-    cl(pageInfo.drawOpeningAnimation)
+    // cl(pageInfo.drawOpeningAnimation)
     if (pageInfo.drawOpeningnAnimation = true) {
         pageInfo.drawOpeningAnimation = false   // flag for only doing this once
-        // cl(here)
-        setTimeout (openingAnimation, 500)
+        setTimeout (openingAnimation, 500)      // not working
     }
 
     // drawTriangles()
-    setTimeout (drawText, 3000)
+    // setTimeout (drawText, 3000)
+
+function createName () {
+
+        let name = document.createElement('div');
+        name.id = 'content';
+        name.innerHTML = 'Luke Wilcox';
+        name.style.fontSize = dynamicFontSize() + 'px'
+        cl(name.style.fontSize)
+        document.body.appendChild(name);
+
+
+
+}
+setTimeout(createName, 5000)
+
+
 }   // end drawScreen wrapper
 }   // end onload wrapper

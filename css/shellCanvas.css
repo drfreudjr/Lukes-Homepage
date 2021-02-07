@@ -3,6 +3,13 @@
 body 	{background-color: Turquoise;
 	}
 
+#content {
+    color: yellow;
+    position: absolute;
+    left: 3%;
+    top: 10%;
+}
+
 
 
 
