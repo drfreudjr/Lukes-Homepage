@@ -78,10 +78,12 @@ function drawTriangles () {
     context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
     context.fill()
 
-    if (pageInfo.animate = true && pageInfo.ratioMagnifier < 2.7) {
-        speed = .01
+    if (pageInfo.animate == true && pageInfo.ratioMagnifier < 2.7) {
+        cl(pageInfo.animate, pageInfo.ratioMagnifier)
+        speed = .1
         pageInfo.ratioMagnifier += (speed)
         requestAnimationFrame(drawTriangles)
+        cl(speed)
     }
 }
 
@@ -119,13 +121,6 @@ function drawText () {
     drawForegroundImage()
     drawTriangles()
     drawText()
-
-function blackout () {
-    pageInfo.animate = true
-
-}
-
-
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
