@@ -14,7 +14,7 @@ const cl = console.log;
     ratioModifier : 1.2,                // 0 is no triangles  2.65 is erasure
     triangleWidth : null,               // these are calculated in first drawTriangle function call
     triangleHeight : null,
-    animation : false,
+    animation : true,
     clickableBox: {x: null, y: null, dx: null, dy: null}             // xy coords then delta xy
 }
 
@@ -77,7 +77,9 @@ function drawTriangles () {
     context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
     context.fill()
 
-    if (pageInfo.animate == true && pageInfo.ratioModifier < 2.7) {  // dynamically clears screen
+    cl(pageInfo.animation, pageInfo.ratioModifier)
+
+    if (pageInfo.animation == true && pageInfo.ratioModifier < 2.7) {  // dynamically clears screen
         speed = .1                                  // try to get acceleration going
         pageInfo.ratioModifier += (speed)
         requestAnimationFrame(drawTriangles)
@@ -126,7 +128,6 @@ function drawText () {
     drawForegroundImage()
     drawTriangles()
     drawText()
-
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
