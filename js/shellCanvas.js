@@ -146,10 +146,15 @@ function drawText () {
 
     }
 
-    drawForegroundImage()
-    openingAnimation()
-    // drawTriangles()
-    drawText()
+    function drawSolidBackground () {
+        context.strokeStyle = pageInfo.backgroundColor
+        context.fillRect(0,0,canvas.width,canvas.height)
+    }
 
+    drawSolidBackground()
+    // drawForegroundImage()
+    setTimeout (openingAnimation, 500)
+    // drawTriangles()
+    setTimeout (drawText, 4000)
 }   // end drawScreen wrapper
 }   // end onload wrapper
