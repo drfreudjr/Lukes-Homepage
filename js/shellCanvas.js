@@ -14,7 +14,7 @@ const cl = console.log;
     ratioModifier : 1.2,                // 0 is no triangles  2.551 is erasure
     triangleWidth : null,               // these are calculated in first drawTriangle function call
     triangleHeight : null,
-    animation : 'close',
+    animation : 'open',
     speed : 1,                        // speed at which triangles change
     clickableBox: {x: null, y: null, dx: null, dy: null}   // xy coords then delta xy
 
@@ -61,7 +61,7 @@ function drawForegroundImage () {
 }
 
 function drawTriangles () {             
-
+    context.drawImage(c, 0, 0)  // redraw image
     pageInfo.finalRatio = pageInfo.GOLDENRATIO*pageInfo.ratioModifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)         // set horizontal distance from top left
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)       // set vertical distance from top left
@@ -73,18 +73,30 @@ function drawTriangles () {
     context.lineTo(0, pageInfo.triangleHeight)      // bottom left
     context.fill()                                  // draw (last path is implicit)
 
+    cl(pageInfo.triangleWidth)
+
     context.beginPath()                             // draw bottom triangle
     context.moveTo(innerWidth - pageInfo.triangleWidth, innerHeight)  // bottom left
     context.lineTo(innerWidth,innerHeight)          // bottom right corner
     context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
     context.fill()
 
-    cl(pageInfo.animation, pageInfo.ratioModifier)
 
     if (pageInfo.animation == 'close' && pageInfo.ratioModifier < 2.551) {  // dynamically clears screen
         pageInfo.ratioModifier += .01/pageInfo.speed
         requestAnimationFrame(drawTriangles)
-        pageInfo.speed -= .0155
+        pageInfo.speed -= .0155     // changes global object so this builds
+    }
+
+    if (pageInfo.animation == 'open' && pageInfo.ratioModifier > 0) {  // dynamically clears screen
+        // context.clearRect(0, 0, canvas.width, canvas.height);
+        // canvas.width = canvas.width
+        // context.drawImage(c, 0, 0)  // redraw image
+        // pageInfo.backgroundColor = 'yellow'
+        pageInfo.ratioModifier -= .01/pageInfo.speed
+        requestAnimationFrame(drawTriangles)
+        pageInfo.speed -= .001
+        // cl(pageInfo.animation, pageInfo.ratioModifier)
 
     }
 }
