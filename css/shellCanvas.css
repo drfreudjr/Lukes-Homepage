@@ -1,8 +1,8 @@
 /* Shell CSS file */
 
-body 	{background-color: "#7aa600";
-        color: yellow;
-	}
+body    {   color: "#7aa600";
+            font-family: Courier;
+}
 
 #nameStyle {
     color: yellow;

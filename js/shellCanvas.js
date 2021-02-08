@@ -150,12 +150,12 @@ function createNav1 () {
         let navOne = document.createElement('div');
         navOne.id = 'navOneStyle';
         navOne.innerHTML = pageInfo.navOneContent;
-        navOne.style.fontSize = dynamicFontSize()*0.8 + 'px' // 0.6 hack
+        navOne.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
         cl(navOne.style.fontSize)
         document.body.appendChild(navOne)
 }
-setTimeout(createName, 4000)
-setTimeout(createNav1, 6000)
+setTimeout(createName, 3700)
+setTimeout(createNav1, 5600)
 
 
 }   // end drawScreen wrapper
