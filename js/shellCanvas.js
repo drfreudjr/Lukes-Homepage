@@ -141,6 +141,8 @@ function drawTriangles () {
 
 function createName () {
 
+        if (document.body.name)
+            document.body.removeChild(name)     // remove old element in case we're redrawing
         let name = document.createElement('div');
         name.id = 'nameStyle';
         name.innerHTML = pageInfo.whoAmI;
