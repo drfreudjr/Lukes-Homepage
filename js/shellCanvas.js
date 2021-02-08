@@ -140,9 +140,11 @@ function drawTriangles () {
     // setTimeout (drawText, 3000)
 
 function createName () {
+        if (document.querySelector('#nameStyle')) {     // remove element if exists in case of redraw
+            const elem = document.querySelector('#nameStyle');
+            elem.parentNode.removeChild(elem);
+        }
 
-        if (document.body.name)
-            document.body.removeChild(name)     // remove old element in case we're redrawing
         let name = document.createElement('div');
         name.id = 'nameStyle';
         name.innerHTML = pageInfo.whoAmI;
@@ -152,6 +154,10 @@ function createName () {
 }
 
 function createNav1 () {
+        if (document.querySelector('#navOneStyle')) {     // remove element if exists in case of redraw
+            const elem = document.querySelector('#navOneStyle');
+            elem.parentNode.removeChild(elem);
+        }
 
         let navOne = document.createElement('div');
         navOne.id = 'navOneStyle';
