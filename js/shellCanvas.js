@@ -20,7 +20,8 @@ const cl = console.log;
     speed : 1,                          // speed at which triangles change
     stopDrawingAt: null,
     whoAmI: "Luke Wilcox",
-    navOneContent: "About Me" 
+    navOneContent: "About Me",
+    drawOpeningAnimation: true,
 }
 
 window.onload = function () {           // onload wrapper
@@ -130,8 +131,8 @@ function drawTriangles () {
 
     drawSolidBackground()
     // drawForegroundImage()
-    // cl(pageInfo.drawOpeningAnimation)
-    if (pageInfo.drawOpeningnAnimation = true) {
+    cl(pageInfo.drawOpeningAnimation)
+    if (pageInfo.drawOpeningAnimation = true) {
         pageInfo.drawOpeningAnimation = false   // flag for only doing this once
         setTimeout (openingAnimation, 0)      // not working
     }
@@ -141,7 +142,7 @@ function drawTriangles () {
 
 function createName () {
         if (document.querySelector('#nameStyle')) {     // remove element if exists in case of redraw
-            const elem = document.querySelector('#nameStyle');
+            const elem = document.querySelector('#nameStyle');  // to do - move this from the delay
             elem.parentNode.removeChild(elem);
         }
 
@@ -149,7 +150,6 @@ function createName () {
         name.id = 'nameStyle';
         name.innerHTML = pageInfo.whoAmI;
         name.style.fontSize = dynamicFontSize() + 'px'
-        cl(name.style.fontSize)
         document.body.appendChild(name)
 }
 
@@ -163,7 +163,6 @@ function createNav1 () {
         navOne.id = 'navOneStyle';
         navOne.innerHTML = pageInfo.navOneContent;
         navOne.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
-        cl(navOne.style.fontSize)
         document.body.appendChild(navOne)
 }
 setTimeout(createName, 3500)
