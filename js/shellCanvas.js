@@ -2,6 +2,10 @@ const cl = console.log;
 /*  Homepage for Luke Wilcox - my super genius nephew :)
     Built on 100% canvas with dynamic full-screen resizing
     by Dr Freudjr https://drfreudjr.github.io/
+
+    Doing mouse actions on canvas was super ridiculous; vertical math on font size etc
+    Page now writing over the canvas with text css which only works when absolute position
+    otherwise behind canvas element
  */
 
  pageInfo = {                           // Global object
