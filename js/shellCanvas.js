@@ -9,14 +9,14 @@ const cl = console.log;
  */
 
  pageInfo = {                           // Global object
-    backgroundColor : '#111111',        // vestigal i think
+    backgroundColor : '#111111',        // triangle color
     backgroundImage : "bostonSat.webp",
     textColor : '#7aa600',              // vestigal // green pulled from picture
     GOLDENRATIO :.382,                  // The golden ratio is peaceful 
     ratioModifier : 1.2,                // 0 is no triangles  2.551 is erasure
     triangleWidth : null,               // these are calculated in first drawTriangle function call
     triangleHeight : null,
-    animation : 'open',
+    animation : 'open',                 // animation style
     speed : 1,                          // speed at which triangles change
     stopDrawingAt: null,
     whoAmI: "Luke Wilcox",
@@ -102,7 +102,7 @@ function drawTriangles () {
 
 // // Text
 
-    function dynamicFontSize (originalFontSize = 55, originalCanvsSize = 1360) {        // enter original design specs
+    function dynamicFontSize (originalFontSize = 50, originalCanvsSize = 1360) {        // enter original design specs
         percentOfFullSize = innerWidth/originalCanvsSize                                
         adjustedLinearFontSize = originalFontSize*percentOfFullSize                     //linear transform
         adjustedNonlinearFontSize = originalFontSize /(1-Math.log(percentOfFullSize))   //nonlinear transform
@@ -165,6 +165,8 @@ function createNav1 () {
         navOne.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
         document.body.appendChild(navOne)
 }
+
+
 setTimeout(createName, 3500)
 setTimeout(createNav1, 5100)
 
