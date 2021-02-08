@@ -1,23 +1,23 @@
 const cl = console.log;
 /*  Homepage for Luke Wilcox - my super genius nephew :)
-    Built on 100% canvas with dynamic full-screen resizing
+    Built on 190% canvas with dynamic full-screen resizing
     by Dr Freudjr https://drfreudjr.github.io/
 
-    Doing mouse actions on canvas was super ridiculous; vertical math on font size etc
-    Page now writing over the canvas with text css which only works when absolute position
-    otherwise behind canvas element
+    Doing mouse actions on canvas was super ridiculous; vtrying to find click box almost impossible
+    Page now writing over the canvas with text css; btw which only works when absolute position
+    otherwise behind canvas element. you need to always set this
  */
 
  pageInfo = {                           // Global object
-    backgroundColor : '#111111',
+    backgroundColor : '#111111',        // vestigal i think
     backgroundImage : "bostonSat.webp",
-    textColor : '#7aa600',              // green pulled from picture
-    GOLDENRATIO :.382,                  // The golden ratio is peaceful - magnifier increases blockout
+    textColor : '#7aa600',              // vestigal // green pulled from picture
+    GOLDENRATIO :.382,                  // The golden ratio is peaceful 
     ratioModifier : 1.2,                // 0 is no triangles  2.551 is erasure
     triangleWidth : null,               // these are calculated in first drawTriangle function call
     triangleHeight : null,
     animation : 'open',
-    speed : 1,                        // speed at which triangles change
+    speed : 1,                          // speed at which triangles change
     stopDrawingAt: null,
     whoAmI: "Luke Wilcox",
     navOneContent: "About Me" 
@@ -159,7 +159,7 @@ function createNav1 () {
         document.body.appendChild(navOne)
 }
 setTimeout(createName, 3500)
-setTimeout(createNav1, 5600)
+setTimeout(createNav1, 5100)
 
 
 }   // end drawScreen wrapper
