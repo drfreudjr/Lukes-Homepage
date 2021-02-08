@@ -154,7 +154,7 @@ function createNav1 () {
         cl(navOne.style.fontSize)
         document.body.appendChild(navOne)
 }
-setTimeout(createName, 3800)
+setTimeout(createName, 3500)
 setTimeout(createNav1, 5600)
 
 
