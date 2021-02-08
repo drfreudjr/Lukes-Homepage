@@ -129,7 +129,7 @@ function drawTriangles () {
     // cl(pageInfo.drawOpeningAnimation)
     if (pageInfo.drawOpeningnAnimation = true) {
         pageInfo.drawOpeningAnimation = false   // flag for only doing this once
-        setTimeout (openingAnimation, 500)      // not working
+        setTimeout (openingAnimation, 0)      // not working
     }
 
     // drawTriangles()
@@ -154,7 +154,7 @@ function createNav1 () {
         cl(navOne.style.fontSize)
         document.body.appendChild(navOne)
 }
-setTimeout(createName, 4000)
+setTimeout(createName, 3800)
 setTimeout(createNav1, 5600)
 
 
