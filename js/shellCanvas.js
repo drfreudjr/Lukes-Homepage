@@ -15,7 +15,7 @@ const cl = console.log;
     animation : 'open',                 // animation style
     speed : 1,                          // speed at which triangles change
     stopDrawingAt: null,
-    primaryTitle: "Luke Wilcox",
+    levelOneHeader: "Luke Wilcox",
     navOneContent: "About Me",
     drawOpeningAnimation: true,
 }
@@ -113,7 +113,7 @@ function drawTriangles () {
         function drawName () {
             let nameEl = document.createElement('div');
             nameEl.id = 'nameStyle';
-            nameEl.innerHTML = pageInfo.primaryTitle;
+            nameEl.innerHTML = pageInfo.levelOneHeader;
             nameEl.style.fontSize = dynamicFontSize() + 'px'
             document.body.appendChild(nameEl)
         }
@@ -153,7 +153,6 @@ function drawTriangles () {
             context.lineTo(innerWidth,0)
             context.stroke()
             context.closePath()
-            if (i <256) setTimeout(requestAnimationFrame(drawLine,i+.001), 1000)
         }
         for (i = 0; i < 256; ++i) {
             setTimeout(requestAnimationFrame(drawLine, i), 100)
@@ -165,7 +164,6 @@ function drawTriangles () {
     }
 
 openingAnimation()
-// drawSolidBackground()
 setTimeout(createName, 4500)
 setTimeout(createNav1, 6100)
 
