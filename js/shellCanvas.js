@@ -54,12 +54,6 @@ function sizeCanvas () {                // Create or resize
 
 function drawScreen() {  // wrapper that gets called on resize event
 
-function drawForegroundImage () {
-    const backgroundImage = new Image()                   
-    backgroundImage.src = pageInfo.backgroundImage
-    context.drawImage(c, 0, 0)
-}
-
 function drawTriangles () { 
 
     context.drawImage(c, 0, 0)  // redraw image this needed when subtracting rectangles
@@ -91,8 +85,6 @@ function drawTriangles () {
         pageInfo.ratioModifier -= .01/pageInfo.speed
         requestAnimationFrame(drawTriangles)
         pageInfo.speed -= .001
-        // cl(pageInfo.animation, pageInfo.ratioModifier)
-
     }
 }
 
@@ -104,6 +96,12 @@ function drawTriangles () {
         adjustedNonlinearFontSize = originalFontSize /(1-Math.log(percentOfFullSize))   //nonlinear transform
         return(adjustedNonlinearFontSize)
     }
+
+function drawForegroundImage () {
+    const backgroundImage = new Image()                   
+    backgroundImage.src = pageInfo.backgroundImage
+    context.drawImage(c, 0, 0)
+}
 
     function openingAnimation () {
         function drawLine (i) {
@@ -175,8 +173,8 @@ function drawTriangles () {
     }
 
 drawSolidBackground()
-setTimeout(createName, 3500)
-setTimeout(createNav1, 5100)
+setTimeout(createName, 4500)
+setTimeout(createNav1, 6100)
 
 
 }   // end drawScreen wrapper
