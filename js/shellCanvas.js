@@ -117,10 +117,27 @@ function drawTriangles () {
 
 
     function openingAnimation () {
+        function drawLine (i) {
+
+            context.strokeStyle = `rgb(${i},${i},${i})`
+            context.lineWidth = 1
+            context.lineCap = 'square'
+            context.beginPath()
+            context.moveTo(0,innerHeight)
+            context.lineTo(innerWidth,0)
+            context.stroke()
+            context.closePath()
+            if (i <256) setTimeout(requestAnimationFrame(drawLine,i+.001), 1000)
+        }
+        for (i = 0; i < 256; ++i) {
+
+            setTimeout(requestAnimationFrame(drawLine, i), 100)
+        }
+
         pageInfo.ratioModifier = 2.55        // fully black
         pageInfo.stopDrawingAt = 1.2
         animation = open
-        drawTriangles()
+        setTimeout(drawTriangles,1000)
 
     }
 
@@ -129,16 +146,13 @@ function drawTriangles () {
         context.fillRect(0,0,canvas.width,canvas.height)
     }
 
-    drawSolidBackground()
-    // drawForegroundImage()
-    cl(pageInfo.drawOpeningAnimation)
+ 
     if (pageInfo.drawOpeningAnimation = true) {
         pageInfo.drawOpeningAnimation = false   // flag for only doing this once
         setTimeout (openingAnimation, 0)      // not working
     }
 
-    // drawTriangles()
-    // setTimeout (drawText, 3000)
+
 
 function createName () {
         if (document.querySelector('#nameStyle')) {     // remove element if exists in case of redraw
@@ -167,6 +181,7 @@ function createNav1 () {
 }
 
 
+drawSolidBackground()
 setTimeout(createName, 3500)
 setTimeout(createNav1, 5100)
 
