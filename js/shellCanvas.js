@@ -133,10 +133,6 @@ function drawForegroundImage () {
     }
 
  
-    if (pageInfo.drawOpeningAnimation = true) {
-        pageInfo.drawOpeningAnimation = false   // flag for only doing this once
-        setTimeout (openingAnimation, 0)      // not working
-    }
 
     function createName () {
         if (document.querySelector('#nameStyle')) // avoid double writing
@@ -171,6 +167,12 @@ function drawForegroundImage () {
         }
         drawNavOne()
     }
+
+if (pageInfo.drawOpeningAnimation = true) {
+    pageInfo.drawOpeningAnimation = false   // flag for only doing this once
+    setTimeout (openingAnimation, 0)      // not working
+}
+
 
 drawSolidBackground()
 setTimeout(createName, 4500)
