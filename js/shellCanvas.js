@@ -15,7 +15,7 @@ const cl = console.log;
     animation : 'open',                 // animation style
     speed : 1,                          // speed at which triangles change
     stopDrawingAt: null,
-    whoAmI: "Luke Wilcox",
+    primaryTitle: "Luke Wilcox",
     navOneContent: "About Me",
     drawOpeningAnimation: true,
 }
@@ -97,17 +97,11 @@ function drawTriangles () {
         return(adjustedNonlinearFontSize)
     }
 
-function drawForegroundImage () {
-    const backgroundImage = new Image()                   
-    backgroundImage.src = pageInfo.backgroundImage
-    context.drawImage(c, 0, 0)
-}
-
-
-
-
-
- 
+    function drawForegroundImage () {
+        const backgroundImage = new Image()                   
+        backgroundImage.src = pageInfo.backgroundImage
+        context.drawImage(c, 0, 0)
+    }
 
     function createName () {
         if (document.querySelector('#nameStyle')) // avoid double writing
@@ -119,7 +113,7 @@ function drawForegroundImage () {
         function drawName () {
             let nameEl = document.createElement('div');
             nameEl.id = 'nameStyle';
-            nameEl.innerHTML = pageInfo.whoAmI;
+            nameEl.innerHTML = pageInfo.primaryTitle;
             nameEl.style.fontSize = dynamicFontSize() + 'px'
             document.body.appendChild(nameEl)
         }
@@ -150,7 +144,6 @@ function drawForegroundImage () {
             context.fillRect(0,0,canvas.width,canvas.height)
         }())
 
-
         function drawLine (i) {
             context.strokeStyle = `rgb(${i},${i},${i})`
             context.lineWidth = 1
@@ -163,24 +156,18 @@ function drawForegroundImage () {
             if (i <256) setTimeout(requestAnimationFrame(drawLine,i+.001), 1000)
         }
         for (i = 0; i < 256; ++i) {
-
             setTimeout(requestAnimationFrame(drawLine, i), 100)
         }
-
         pageInfo.ratioModifier = 2.55        // fully black
         pageInfo.stopDrawingAt = 1.2
         animation = open
         setTimeout(drawTriangles,1000)
-
     }
-
-
 
 openingAnimation()
 // drawSolidBackground()
 setTimeout(createName, 4500)
 setTimeout(createNav1, 6100)
-
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
