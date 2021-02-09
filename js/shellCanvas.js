@@ -105,16 +105,8 @@ function drawTriangles () {
         return(adjustedNonlinearFontSize)
     }
 
-    // function dynamicHeightFromTop (originalDistanceFromTop = 80, originalCanvsSize = 1360) { // scales vertically
-    //     percentOfFullSize = innerWidth/originalCanvsSize
-    //     adjustedDistanceFromTop = originalDistanceFromTop*percentOfFullSize
-    //     return(adjustedDistanceFromTop)
-    // }  // archive this code
-
-
     function openingAnimation () {
         function drawLine (i) {
-
             context.strokeStyle = `rgb(${i},${i},${i})`
             context.lineWidth = 1
             context.lineCap = 'square'
@@ -148,23 +140,22 @@ function drawTriangles () {
         setTimeout (openingAnimation, 0)      // not working
     }
 
-
-
     function createName () {
-        if (document.querySelector('#nameStyle'))   
+        if (document.querySelector('#nameStyle')) // avoid double writing
             (function removeElement () {
                 const elem = document.querySelector('#nameStyle');
                 elem.parentNode.removeChild(elem);
             }())
 
-
-        let name = document.createElement('div');
-        name.id = 'nameStyle';
-        name.innerHTML = pageInfo.whoAmI;
-        name.style.fontSize = dynamicFontSize() + 'px'
-        document.body.appendChild(name)
-
-}
+        function drawName () {
+            let nameEl = document.createElement('div');
+            nameEl.id = 'nameStyle';
+            nameEl.innerHTML = pageInfo.whoAmI;
+            nameEl.style.fontSize = dynamicFontSize() + 'px'
+            document.body.appendChild(nameEl)
+        }
+        drawName()
+    }
 
     function createNav1 () {
         if (document.querySelector('#navOneStyle')) // avoid double writing
@@ -173,14 +164,15 @@ function drawTriangles () {
                 navOneEl.parentNode.removeChild(navOneEl);
             }())
 
-
-        let navOneEl = document.createElement('div');
-        navOneEl.id = 'navOneStyle';
-        navOneEl.innerHTML = pageInfo.navOneContent;
-        navOneEl.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
-        document.body.appendChild(navOneEl)
-}
-
+        function drawNavOne () {
+            let navOneEl = document.createElement('div');
+            navOneEl.id = 'navOneStyle';
+            navOneEl.innerHTML = pageInfo.navOneContent;
+            navOneEl.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
+            document.body.appendChild(navOneEl)
+        }
+        drawNavOne()
+    }
 
 drawSolidBackground()
 setTimeout(createName, 3500)
