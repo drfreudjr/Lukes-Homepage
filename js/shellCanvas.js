@@ -13,7 +13,7 @@ const cl = console.log;
     triangleWidth : null,               // these are calculated in first drawTriangle function call
     triangleHeight : null,
     animation : 'open',                 // animation style
-    speed : 1,                          // speed at which triangles change
+    speed : .2,                          // speed at which triangles change decimal is faster
     stopDrawingAt: null,
     levelOneHeader: "Luke Wilcox",
     navOneContent: "About Me",
@@ -90,14 +90,14 @@ function drawTriangles () {
 
 // // Text
 
-    function dynamicFontSize (originalFontSize = 50, originalCanvsSize = 1360) {        // enter original design specs
+    function dynamicFontSize (originalFontSize = 50, originalCanvsSize = 1360) {        // converts original design specs
         percentOfFullSize = innerWidth/originalCanvsSize                                
         adjustedLinearFontSize = originalFontSize*percentOfFullSize                     //linear transform
         adjustedNonlinearFontSize = originalFontSize /(1-Math.log(percentOfFullSize))   //nonlinear transform
         return(adjustedNonlinearFontSize)
     }
 
-    function drawForegroundImage () {
+    function drawForegroundImage () {           //Canvas way of drawing image
         const backgroundImage = new Image()                   
         backgroundImage.src = pageInfo.backgroundImage
         context.drawImage(c, 0, 0)
@@ -155,7 +155,7 @@ function drawTriangles () {
             context.closePath()
         }
         for (i = 0; i < 256; ++i) {
-            setTimeout(requestAnimationFrame(drawLine, i), 100)
+            setTimeout(requestAnimationFrame(drawLine, i), 0)
         }
         pageInfo.ratioModifier = 2.55        // fully black
         pageInfo.stopDrawingAt = 1.2
@@ -164,8 +164,8 @@ function drawTriangles () {
     }
 
 openingAnimation()
-setTimeout(createName, 4500)
-setTimeout(createNav1, 6100)
+setTimeout(createName, 2300)
+setTimeout(createNav1, 4000)
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
