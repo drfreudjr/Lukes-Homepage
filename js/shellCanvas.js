@@ -5,7 +5,7 @@ const cl = console.log;
  */
 
  pageInfo = {                           // Global object
-    backgroundColor : '#111111',        // triangle color
+    backgroundColor : '#000800',        // triangle color
     backgroundImage : "bostonSat.webp",
     textColor : '#7aa600',              // vestigal // green pulled from picture
     GOLDENRATIO :.382,                  // The golden ratio is peaceful 
@@ -90,8 +90,8 @@ function drawTriangles () {
 
 // // Text
 
-    function dynamicFontSize (originalFontSize = 50, originalCanvsSize = 1360) {        // converts original design specs
-        percentOfFullSize = innerWidth/originalCanvsSize                                
+    function dynamicFontSize (originalFontSize = 50, originalCanvasSize = 1360) {        // converts original design specs
+        percentOfFullSize = innerWidth/originalCanvasSize                                
         adjustedLinearFontSize = originalFontSize*percentOfFullSize                     //linear transform
         adjustedNonlinearFontSize = originalFontSize /(1-Math.log(percentOfFullSize))   //nonlinear transform
         return(adjustedNonlinearFontSize)
@@ -120,7 +120,7 @@ function drawTriangles () {
         drawName()
     }
 
-    function createNav1 () {
+    function createNavOne () {
         if (document.querySelector('#navOneStyle')) // avoid double writing
             (function removeElement () {
                 const navOneEl = document.querySelector('#navOneStyle');
@@ -144,7 +144,7 @@ function drawTriangles () {
             context.fillRect(0,0,canvas.width,canvas.height)
         }())
 
-        function drawLine (i) {
+        function drawLine (i=256) {
             context.strokeStyle = `rgb(${i},${i},${i})`
             context.lineWidth = 1
             context.lineCap = 'square'
@@ -154,18 +154,20 @@ function drawTriangles () {
             context.stroke()
             context.closePath()
         }
-        for (i = 0; i < 256; ++i) {
-            setTimeout(requestAnimationFrame(drawLine, i), 0)
+        drawLine(256)
+
+        function openWindow () {
+            pageInfo.ratioModifier = 2.55        // fully black
+            pageInfo.stopDrawingAt = 1.2
+            animation = open
+            setTimeout(drawTriangles,1000)
         }
-        pageInfo.ratioModifier = 2.55        // fully black
-        pageInfo.stopDrawingAt = 1.2
-        animation = open
-        setTimeout(drawTriangles,1000)
+        openWindow()
     }
 
 openingAnimation()
 setTimeout(createName, 2300)
-setTimeout(createNav1, 4000)
+setTimeout(createNavOne, 4000)
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
