@@ -1,11 +1,7 @@
 const cl = console.log;
 /*  Homepage for Luke Wilcox - my super genius nephew :)
-    Built on 190% canvas with dynamic full-screen resizing
-    by Dr Freudjr https://drfreudjr.github.io/
-
-    Doing mouse actions on canvas was super ridiculous; vtrying to find click box almost impossible
-    Page now writing over the canvas with text css; btw which only works when absolute position
-    otherwise behind canvas element. you need to always set this
+    Built with dynamic full-screen resizing on canvas 
+    by Dr Freudjr https://drfreudjr.github.io
  */
 
  pageInfo = {                           // Global object
@@ -60,7 +56,7 @@ function drawScreen() {  // wrapper that gets called on resize event
 
 function drawForegroundImage () {
     const backgroundImage = new Image()                   
-    backgroundImage.src = pageInfo.backgroundImage   
+    backgroundImage.src = pageInfo.backgroundImage
     context.drawImage(c, 0, 0)
 }
 
@@ -154,30 +150,35 @@ function drawTriangles () {
 
 
 
-function createName () {
-        if (document.querySelector('#nameStyle')) {     // remove element if exists in case of redraw
-            const elem = document.querySelector('#nameStyle');  // to do - move this from the delay
-            elem.parentNode.removeChild(elem);
-        }
+    function createName () {
+        if (document.querySelector('#nameStyle'))   
+            (function removeElement () {
+                const elem = document.querySelector('#nameStyle');
+                elem.parentNode.removeChild(elem);
+            }())
+
 
         let name = document.createElement('div');
         name.id = 'nameStyle';
         name.innerHTML = pageInfo.whoAmI;
         name.style.fontSize = dynamicFontSize() + 'px'
         document.body.appendChild(name)
+
 }
 
-function createNav1 () {
-        if (document.querySelector('#navOneStyle')) {     // remove element if exists in case of redraw
-            const elem = document.querySelector('#navOneStyle');
-            elem.parentNode.removeChild(elem);
-        }
+    function createNav1 () {
+        if (document.querySelector('#navOneStyle')) // avoid double writing
+            (function removeElement () {
+                const navOneEl = document.querySelector('#navOneStyle');
+                navOneEl.parentNode.removeChild(navOneEl);
+            }())
 
-        let navOne = document.createElement('div');
-        navOne.id = 'navOneStyle';
-        navOne.innerHTML = pageInfo.navOneContent;
-        navOne.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
-        document.body.appendChild(navOne)
+
+        let navOneEl = document.createElement('div');
+        navOneEl.id = 'navOneStyle';
+        navOneEl.innerHTML = pageInfo.navOneContent;
+        navOneEl.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
+        document.body.appendChild(navOneEl)
 }
 
 
