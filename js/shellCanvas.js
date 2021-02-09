@@ -168,6 +168,6 @@ function drawTriangles () {
 openingAnimation()
 setTimeout(createName, 2300)
 setTimeout(createNavOne, 4000)
-
+cl(innerWidth/innerHeight)
 }   // end drawScreen wrapper
 }   // end onload wrapper

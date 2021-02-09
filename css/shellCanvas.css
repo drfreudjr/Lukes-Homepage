@@ -3,22 +3,30 @@
 body    {   color: #7aa600;
             font-family: Courier;
 }
+    #nameStyle {
+        color: #7aa600;
+        position: absolute;
+        left: 2%;
+        top: 4%;
+    }
 
-#nameStyle {
-    color: #7aa600;
-    position: absolute;
-    left: 2%;
-    top: 4%;
+
+
+    #navOneStyle {
+        color: #8b7611;
+        position: absolute;
+        left:5%;
+        top: 10%;
+    }
+
+
+@media (min-aspect-ratio: 1) {
+    #navOneStyle {
+        color: #8b7611;
+        position: absolute;
+        left:5%;
+        top: 16%;
+    }
 }
-
-
-#navOneStyle {
-    color: #8b7611;
-    position: absolute;
-    left:5%;
-    top: 16%;
-
-}
-
 
 
