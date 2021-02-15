@@ -9,8 +9,8 @@ const cl = console.log;
     backgroundImage : "bostonSat.webp",
     textColor : '#7aa600',              // vestigal // green pulled from picture
     GOLDENRATIO :.382,                  // The golden ratio is peaceful 
-    ratioModifier : 1.2,                // 0 is no triangles  2.551 is erasure
-    triangleWidth : null,               // these are calculated in first drawTriangle function call
+    ratioModifier : 1.2,                // how wide window opens 0 is no triangles  2.551 is erasure
+    triangleWidth : null,               // calculated in drawTriangle function call based on above
     triangleHeight : null,
     animation : 'open',                 // animation style
     speed : .2,                          // speed at which triangles change decimal is faster
@@ -166,8 +166,17 @@ function drawTriangles () {
     }
 
 openingAnimation()
-setTimeout(createName, 2300)
-setTimeout(createNavOne, 4000)
-cl(innerWidth/innerHeight)
+cl(pageInfo.drawOpeningAnimation)
+if (pageInfo.drawOpeningAnimation) {
+    setTimeout(createName, 2300)    //delay display 1st time only
+    setTimeout(createNavOne, 4000)
+}
+else {
+    setTimeout(createName, 0)
+    setTimeout(createNavOne, 0)    
+}
+
+pageInfo.drawOpeningAnimation = false
+
 }   // end drawScreen wrapper
 }   // end onload wrapper
