@@ -22,7 +22,7 @@ const cl = console.log;
 
 window.onload = function () {           // onload wrapper
                                         // Global 2D context reference
-var canvas;                             // Global canvas object reference
+var canvas;                             
 var context; 
 
 // // Begin dynamic fulls screen canvas code
@@ -56,7 +56,7 @@ function drawScreen() {  // wrapper that gets called on resize event
 
 function drawTriangles () { 
 
-    context.drawImage(c, 0, 0)  // redraw image this needed when subtracting rectangles
+    context.drawImage(c, 0, 0)  // redraw bg image when subtracting rectangles
     pageInfo.finalRatio = pageInfo.GOLDENRATIO*pageInfo.ratioModifier
     pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)         // set horizontal distance from top left
     pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)       // set vertical distance from top left
@@ -121,7 +121,7 @@ function drawTriangles () {
     }
 
     function createNavOne () {
-        if (document.querySelector('#navOneStyle')) // avoid double writing
+        if (document.querySelector('#navOneStyle')) // remove old writing
             (function removeElement () {
                 const navOneEl = document.querySelector('#navOneStyle');
                 navOneEl.parentNode.removeChild(navOneEl);
@@ -166,6 +166,7 @@ function drawTriangles () {
     }
 
 openingAnimation()
+
 cl(pageInfo.drawOpeningAnimation)
 if (pageInfo.drawOpeningAnimation) {
     setTimeout(createName, 2300)    //delay display 1st time only
