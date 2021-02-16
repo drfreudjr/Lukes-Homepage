@@ -29,10 +29,11 @@ var canvas;
 fullScreenCanvas()
 
 function fullScreenCanvas() {
-    sizeCanvas()                            // create initial canvas
     addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
 
-    function sizeCanvas () {                // Create or resize 
+    sizeCanvas()                            
+
+    function sizeCanvas () {               
         if (canvas === undefined) {         
             canvas = createCanvas();        
            context = canvas.getContext("2d");  
@@ -41,7 +42,6 @@ function fullScreenCanvas() {
         canvas.height = innerHeight; 
         drawScreen()     
     }
-
 
     function createCanvas () {   
        const canvas = document.createElement("canvas"); 
@@ -54,7 +54,7 @@ function fullScreenCanvas() {
 
 }
 
-// // global-specific code
+// // page-specific code
 
 function drawScreen() {  // wrapper that gets called on resize event
 
