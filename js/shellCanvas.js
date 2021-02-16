@@ -32,15 +32,6 @@ function fullScreenCanvas() {
     sizeCanvas()                            // create initial canvas
     addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
 
-    function createCanvas () {   
-       const canvas = document.createElement("canvas"); 
-       canvas.style.position = "absolute"; 
-       canvas.style.left     = "0px";      
-       canvas.style.top      = "0px";
-       document.body.appendChild(canvas);  // Add to document
-    return canvas;
-    }
-
     function sizeCanvas () {                // Create or resize 
         if (canvas === undefined) {         
             canvas = createCanvas();        
@@ -50,6 +41,17 @@ function fullScreenCanvas() {
         canvas.height = innerHeight; 
         drawScreen()     
     }
+
+
+    function createCanvas () {   
+       const canvas = document.createElement("canvas"); 
+       canvas.style.position = "absolute"; 
+       canvas.style.left     = "0px";      
+       canvas.style.top      = "0px";
+       document.body.appendChild(canvas);  // Add to document
+    return canvas;
+    }
+
 }
 
 // // global-specific code
