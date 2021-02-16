@@ -4,20 +4,20 @@ const cl = console.log;
     by drfreudjr https://drfreudjr.github.io
  */
 
- global = {                           // Global object
-    backgroundColor : '#000800',        // triangle color
-    backgroundImage : "bostonSat.webp",
+ global = {  
+    backgroundImage : "bostonSat.webp",                         
+    triangleColor : '#000800',        // triangle color
     textColor : '#7aa600',              // vestigal // green pulled from picture
     GOLDENRATIO :.382,                  // The golden ratio is peaceful 
     ratioModifier : 1.2,                // how wide window opens 0 is no triangles  2.551 is erasure
-    triangleWidth : null,               // calculated in drawTriangle function call based on above
-    triangleHeight : null,
     animation : 'open',                 // animation style
     speed : .2,                          // speed at which triangles change decimal is faster
-    stopDrawingAt: null,
     levelOneHeader: "Luke Wilcox",
     navOneContent: "About Me",
     drawOpeningAnimation: true,
+    triangleWidth : null,               // calculated in drawTriangle function call based on above
+    triangleHeight : null,
+    stopDrawingAt: null,
 }
 
 window.onload = function () {           // onload wrapper
@@ -32,15 +32,6 @@ fullScreenCanvas()
 function fullScreenCanvas() {
     sizeCanvas()                            // create initial canvas
     addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
-    function sizeCanvas () {                // Create or resize 
-        if (canvas === undefined) {         
-            canvas = createCanvas();        
-           context = canvas.getContext("2d");  
-        }
-        canvas.width  = innerWidth; 
-        canvas.height = innerHeight; 
-        drawScreen()     
-    }
 
     function createCanvas () {   
        const canvas = document.createElement("canvas"); 
@@ -49,6 +40,16 @@ function fullScreenCanvas() {
        canvas.style.top      = "0px";
        document.body.appendChild(canvas);  // Add to document
     return canvas;
+    }
+
+    function sizeCanvas () {                // Create or resize 
+        if (canvas === undefined) {         
+            canvas = createCanvas();        
+           context = canvas.getContext("2d");  
+        }
+        canvas.width  = innerWidth; 
+        canvas.height = innerHeight; 
+        drawScreen()     
     }
 }
 
@@ -63,7 +64,7 @@ function drawTriangles () {
     global.triangleWidth = Math.round(innerWidth*global.finalRatio)         // set horizontal distance from top left
     global.triangleHeight = Math.round(innerHeight*global.finalRatio)       // set vertical distance from top left
 
-    context.fillStyle = global.backgroundColor    // draw top triangle
+    context.fillStyle = global.triangleColor    // draw top triangle
     context.beginPath()             
     context.moveTo(global.triangleWidth, 0)       // top right
     context.lineTo(0,0)                             // top left corner
@@ -90,7 +91,7 @@ function drawTriangles () {
     }
 }
 
-// // Text
+// Text
 
     function dynamicFontSize (originalFontSize = 50, originalCanvasSize = 1360) {        // converts original design specs
         percentOfFullSize = innerWidth/originalCanvasSize                                
@@ -142,7 +143,7 @@ function drawTriangles () {
     function openingAnimation () {
 
         (function drawSolidBackground () {
-            context.strokeStyle = global.backgroundColor
+            context.strokeStyle = global.triangleColor
             context.fillRect(0,0,canvas.width,canvas.height)
         }())
 
