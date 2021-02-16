@@ -1,10 +1,10 @@
 const cl = console.log;
-/*  Homepage for Luke Wilcox - my super genius nephew :)
+/*  Homeglobal for Luke Wilcox - my super genius nephew :)
     Built with dynamic full-screen resizing on canvas 
     by drfreudjr https://drfreudjr.github.io
  */
 
- pageInfo = {                           // Global object
+ global = {                           // Global object
     backgroundColor : '#000800',        // triangle color
     backgroundImage : "bostonSat.webp",
     textColor : '#7aa600',              // vestigal // green pulled from picture
@@ -53,41 +53,41 @@ function fullScreenCanvas() {
     }
 }
 
-// // Page-specific code
+// // global-specific code
 
 function drawScreen() {  // wrapper that gets called on resize event
 
 function drawTriangles () { 
 
     context.drawImage(c, 0, 0)  // redraw bg image when subtracting rectangles
-    pageInfo.finalRatio = pageInfo.GOLDENRATIO*pageInfo.ratioModifier
-    pageInfo.triangleWidth = Math.round(innerWidth*pageInfo.finalRatio)         // set horizontal distance from top left
-    pageInfo.triangleHeight = Math.round(innerHeight*pageInfo.finalRatio)       // set vertical distance from top left
+    global.finalRatio = global.GOLDENRATIO*global.ratioModifier
+    global.triangleWidth = Math.round(innerWidth*global.finalRatio)         // set horizontal distance from top left
+    global.triangleHeight = Math.round(innerHeight*global.finalRatio)       // set vertical distance from top left
 
-    context.fillStyle = pageInfo.backgroundColor    // draw top triangle
+    context.fillStyle = global.backgroundColor    // draw top triangle
     context.beginPath()             
-    context.moveTo(pageInfo.triangleWidth, 0)       // top right
+    context.moveTo(global.triangleWidth, 0)       // top right
     context.lineTo(0,0)                             // top left corner
-    context.lineTo(0, pageInfo.triangleHeight)      // bottom left
+    context.lineTo(0, global.triangleHeight)      // bottom left
     context.fill()                                  // draw (last path is implicit)
 
     context.beginPath()                             // draw bottom triangle
-    context.moveTo(innerWidth - pageInfo.triangleWidth, innerHeight)  // bottom left
+    context.moveTo(innerWidth - global.triangleWidth, innerHeight)  // bottom left
     context.lineTo(innerWidth,innerHeight)          // bottom right corner
-    context.lineTo(innerWidth, innerHeight - pageInfo.triangleHeight) // top right
+    context.lineTo(innerWidth, innerHeight - global.triangleHeight) // top right
     context.fill()
 
 
-    if (pageInfo.animation == 'close' && pageInfo.ratioModifier < 2.551) {  // dynamically clears screen
-        pageInfo.ratioModifier += .01/pageInfo.speed
+    if (global.animation == 'close' && global.ratioModifier < 2.551) {  // dynamically clears screen
+        global.ratioModifier += .01/global.speed
         requestAnimationFrame(drawTriangles)
-        pageInfo.speed -= .0155     // changes global object so this builds
+        global.speed -= .0155     // changes global object so this builds
     }
 
-    if (pageInfo.animation == 'open' && pageInfo.ratioModifier > pageInfo.stopDrawingAt) {  // dynamically clears screen
-        pageInfo.ratioModifier -= .01/pageInfo.speed
+    if (global.animation == 'open' && global.ratioModifier > global.stopDrawingAt) {  // dynamically clears screen
+        global.ratioModifier -= .01/global.speed
         requestAnimationFrame(drawTriangles)
-        pageInfo.speed -= .001
+        global.speed -= .001
     }
 }
 
@@ -102,7 +102,7 @@ function drawTriangles () {
 
     function drawForegroundImage () {           //Canvas way of drawing image
         const backgroundImage = new Image()                   
-        backgroundImage.src = pageInfo.backgroundImage
+        backgroundImage.src = global.backgroundImage
         context.drawImage(c, 0, 0)
     }
 
@@ -116,7 +116,7 @@ function drawTriangles () {
         function drawName () {
             let nameEl = document.createElement('div');
             nameEl.id = 'nameStyle';
-            nameEl.innerHTML = pageInfo.levelOneHeader;
+            nameEl.innerHTML = global.levelOneHeader;
             nameEl.style.fontSize = dynamicFontSize() + 'px'
             document.body.appendChild(nameEl)
         }
@@ -133,7 +133,7 @@ function drawTriangles () {
         function drawNavOne () {
             let navOneEl = document.createElement('div');
             navOneEl.id = 'navOneStyle';
-            navOneEl.innerHTML = pageInfo.navOneContent;
+            navOneEl.innerHTML = global.navOneContent;
             navOneEl.style.fontSize = dynamicFontSize()*0.6 + 'px' // 0.6 hack
             document.body.appendChild(navOneEl)
         }
@@ -143,7 +143,7 @@ function drawTriangles () {
     function openingAnimation () {
 
         (function drawSolidBackground () {
-            context.strokeStyle = pageInfo.backgroundColor
+            context.strokeStyle = global.backgroundColor
             context.fillRect(0,0,canvas.width,canvas.height)
         }())
 
@@ -160,8 +160,8 @@ function drawTriangles () {
         drawLine()
 
         function openWindow () {
-            pageInfo.ratioModifier = 2.55        // fully black
-            pageInfo.stopDrawingAt = 1.2
+            global.ratioModifier = 2.55        // fully black
+            global.stopDrawingAt = 1.2
             animation = open
             setTimeout(drawTriangles,1000)
         }
@@ -170,8 +170,8 @@ function drawTriangles () {
 
 openingAnimation()
 
-cl(pageInfo.drawOpeningAnimation)
-if (pageInfo.drawOpeningAnimation) {
+cl(global.drawOpeningAnimation)
+if (global.drawOpeningAnimation) {
     setTimeout(createName, 2300)    //delay display 1st time only
     setTimeout(createNavOne, 4000)
 }
@@ -180,7 +180,7 @@ else {
     setTimeout(createNavOne, 0)    
 }
 
-pageInfo.drawOpeningAnimation = false   
+global.drawOpeningAnimation = false   
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
