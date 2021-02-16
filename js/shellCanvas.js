@@ -23,7 +23,6 @@ const cl = console.log;
 window.onload = function () {           // onload wrapper
 
 var canvas;                             
-var context; 
 
 // // Begin dynamic fulls screen canvas code
 
