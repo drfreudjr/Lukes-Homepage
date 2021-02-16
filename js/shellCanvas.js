@@ -21,35 +21,38 @@ const cl = console.log;
 }
 
 window.onload = function () {           // onload wrapper
-                                        // Global 2D context reference
+
+
+                            // Global 2D context reference
 var canvas;                             
 var context; 
 
 // // Begin dynamic fulls screen canvas code
+function fullScreenCanvas() {
+    sizeCanvas()                            // create initial canvas
+    addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
 
-sizeCanvas()                            // create initial canvas
-addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
+    function createCanvas () {   
+       const canvas = document.createElement("canvas"); 
+       canvas.style.position = "absolute"; 
+       canvas.style.left     = "0px";      
+       canvas.style.top      = "0px";
 
-function createCanvas () {   
-    const canvas = document.createElement("canvas"); 
-    canvas.style.position = "absolute"; 
-    canvas.style.left     = "0px";      
-    canvas.style.top      = "0px";
-
-    document.body.appendChild(canvas);  // Add to document
+            document.body.appendChild(canvas);  // Add to document
     return canvas;
-}
-
-function sizeCanvas () {                // Create or resize 
-    if (canvas === undefined) {         
-        canvas = createCanvas();        
-        context = canvas.getContext("2d");  
     }
-    canvas.width  = innerWidth; 
-    canvas.height = innerHeight; 
-    drawScreen()     
-}
 
+    function sizeCanvas () {                // Create or resize 
+        if (canvas === undefined) {         
+            canvas = createCanvas();        
+           context = canvas.getContext("2d");  
+        }
+        canvas.width  = innerWidth; 
+        canvas.height = innerHeight; 
+        drawScreen()     
+    }
+}
+fullScreenCanvas()
 // // Page-specific code
 
 function drawScreen() {  // wrapper that gets called on resize event
