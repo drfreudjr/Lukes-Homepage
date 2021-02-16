@@ -1,7 +1,7 @@
 const cl = console.log;
 /*  Homepage for Luke Wilcox - my super genius nephew :)
     Built with dynamic full-screen resizing on canvas 
-    by Dr Freudjr https://drfreudjr.github.io
+    by drfreudjr https://drfreudjr.github.io
  */
 
  pageInfo = {                           // Global object
@@ -22,12 +22,13 @@ const cl = console.log;
 
 window.onload = function () {           // onload wrapper
 
-
-                            // Global 2D context reference
 var canvas;                             
 var context; 
 
 // // Begin dynamic fulls screen canvas code
+
+fullScreenCanvas()
+
 function fullScreenCanvas() {
     sizeCanvas()                            // create initial canvas
     addEventListener("resize", sizeCanvas); // resize canvas and redraw on window size change
@@ -37,8 +38,7 @@ function fullScreenCanvas() {
        canvas.style.position = "absolute"; 
        canvas.style.left     = "0px";      
        canvas.style.top      = "0px";
-
-            document.body.appendChild(canvas);  // Add to document
+       document.body.appendChild(canvas);  // Add to document
     return canvas;
     }
 
@@ -52,7 +52,7 @@ function fullScreenCanvas() {
         drawScreen()     
     }
 }
-fullScreenCanvas()
+
 // // Page-specific code
 
 function drawScreen() {  // wrapper that gets called on resize event
@@ -147,8 +147,8 @@ function drawTriangles () {
             context.fillRect(0,0,canvas.width,canvas.height)
         }())
 
-        function drawLine (i=256) {
-            context.strokeStyle = `rgb(${i},${i},${i})`
+        function drawLine (r= 256, g= 256, b=256) {
+            context.strokeStyle = `rgb(${r},${g},${b})`
             context.lineWidth = 1
             context.lineCap = 'square'
             context.beginPath()
@@ -157,7 +157,7 @@ function drawTriangles () {
             context.stroke()
             context.closePath()
         }
-        drawLine(256)
+        drawLine()
 
         function openWindow () {
             pageInfo.ratioModifier = 2.55        // fully black
@@ -180,7 +180,7 @@ else {
     setTimeout(createNavOne, 0)    
 }
 
-pageInfo.drawOpeningAnimation = false
+pageInfo.drawOpeningAnimation = false   
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
